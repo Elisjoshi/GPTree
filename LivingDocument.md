@@ -410,7 +410,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 
 **Jackson: Backend**. This role is necessary to work with user data and the database of trees/related content, as well as the LLM’s that will generate the content that users see. He is a good fit for the role primarily because he is highly interested in learning about developing a backend.
 
-### Timeline:
+### Timeline
 
 ##### End Of Week 3 - Project Requirements
 GPTree functional and non-functional requirements are solidified. Team processes are documented.
