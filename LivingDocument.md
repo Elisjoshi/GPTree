@@ -348,13 +348,16 @@ The app updates the progress of review
 
 **List of steps (success scenario)**
 
-1. User selects all flashcards  
-2. The website loads the user's previous conversations and current progress in review  
+1. User selects Flashcards button
+2. The website loads a new screen where user's previous conversations and current progress in review  
 3. User selects “Review previous topics”  
-4. The website shows the tree of previously studied topics   
-5. The website displays the flashcards from that topic  
-6. User flips through the flashcards to review them   
-7. The website marks which cards have been reviewed by the user
+4. The website shows the tree of previously studied topics
+5. The User choses which topic to review   
+6. The website displays the flashcards from that topic  
+7. User flips through each flashcard to review them   
+8. The website marks which cards have been reviewed by the user
+9. User ends review session by clicking end
+10. Website brings user back to homepage
 
 **Extensions/variations of the success scenario**
 
