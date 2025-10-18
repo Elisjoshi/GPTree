@@ -2,11 +2,11 @@
 // Zod can grab the schemas from this file and use them to validate
 // incoming requests at runtime
 
-import { z, ZodObject } from 'zod';
+import { z } from 'zod';
 
-
+// Schema for creating a new user
 export const CreateUserSchema = z.object({
-    username: z.string().min(1).max(30),
+    name: z.string().min(1).max(30),
     email: z.email()
     // Oauth handles login so no password field
 })
@@ -14,3 +14,20 @@ export const CreateUserSchema = z.object({
 // We can export the type of the CreateUserSchema for use elsewhere
 export type CreateUser = z.infer<typeof CreateUserSchema>;
 
+// Schema for what we expect after creating a user
+export const UserCreatedSchema = z.object({
+    id: z.string().min(1),
+    name: z.string().min(1).max(30).optional().nullable(),
+    email: z.email(),
+    emailVerified: z.date().optional().nullable(),
+    createdAt: z.coerce.date(),
+    image: z.string().optional().nullable(),
+    // Leaving these here for now, but prisma doesn't seem to return
+    // them when we create a new user, although it might later?
+    // accounts: z.array(z.any()),  // <--
+    // sessions: z.array(z.any()),  // <-- Simplified for brevity
+    // trees: z.array(z.any())      // <--
+});
+
+// We can export this too
+export type UserCreated = z.infer<typeof UserCreatedSchema>;

@@ -22,15 +22,15 @@ export async function POST(req: NextRequest) {
         // If the error was in parsing, it's the client's fault: return 400
         if (err instanceof z.ZodError) {
             return NextResponse.json(
-                { errors: z.flattenError(err)},
-                { status: 400}
+                { errors: z.flattenError(err) },
+                { status: 400 }
             )}
         
         // Otherwise it's the server's fault: return 500
-        // We might want to have other error cases later, like if prisma
+        // We might want to have other error cases later, like if prisma fails
         return NextResponse.json(
-            { error: 'Internal Server Error'},
-            { status: 500}
+            { error: 'Internal Server Error' },
+            { status: 500 }
         );
     }
 }
