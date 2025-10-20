@@ -513,7 +513,7 @@ All Functional Requirements are implemented and tested. A production version is 
 
 Product is released and is ready for presentation. Individual retrospective complete.
 
-### Major risks that may prevent the completion of the project (And Mitigations)
+### Major risks
 
 * Groq may fail as a LLM provider and we are unable to find affordable and functional alternatives  
   - We will design our product to be highly modular with regard to both the LLM API provider and the LLM model itself. This will allow us to be able to easily switch both models and providers if ever deemed necessary.
