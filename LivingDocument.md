@@ -222,28 +222,42 @@ To mitigate risks related to LLM output variability, we will do the following:
 
 **Triggers**
 
-* 
+* User clicks a Node on the Tree view
 
 **Preconditions**
 
 * User has created an account on GPTree
 * User has created a Tree with at least one Node
+* Target Node exists and the database is accessible
 
 **Postconditions (success scenario)**
 
-* 
+* The Node is displayed with Title, Question, Text, Key Points Summary, and generated follow-up questions
+* Context is preserved with navigation to parent and child Nodes
+* Quick actions are available to ask a follow-up, generate flashcards, copy link, and mark for review
+* Reading progress is recorded for the user
 
 **List of steps (success scenario)**
 
-1. 
+1. System: Receives request to open Node by id
+2. System: Fetches Node content and related metadata, including parent and children
+3. System: Renders Node view with Title, Question, Text, Key Points Summary, and suggested follow-ups
+4. User: Reads content and optionally clicks a suggested follow-up or enters their own question
+5. System: Provides navigation to parent and child Nodes and shows quick actions for flashcards and copying a shareable link
 
 **Extensions/variations of the success scenario**
 
-* 
+* Open via pop up instead of full page to keep Tree visible
+* Keyboard shortcuts for next and previous Node navigation
+* Print or export the Node as a PDF or markdown
+* Show version history of the Node’s generated content
+* Inline search within the Node to highlight keywords
 
 **Exceptions: failure conditions and scenarios**
 
-* 
+* Node not found or user lacks permission → Display “Node unavailable” and offer navigation back to the Tree
+* Database or network error → Show error message and a Retry option
+* Corrupted or incomplete content → Show “Content could not be loaded” with a prompt to regenerate or contact support
 
 ### **3.6. Generate Flashcards from a Node**
 
@@ -614,6 +628,9 @@ The first four models — User, Account, Session, and VerificationToken — are 
 | followups | String[] | — | List of suggested follow-up questions. |
 | treeId | Int | **FK → Tree(id)** | Links the node to its parent tree. |
 | tree | Tree | — | Relation to **Tree** (many-to-one). |
+| parentId | Int? | **FK → Node(id)** | Optional reference to the parent node (if this node is a child). |
+| parent | Node? | — | Relation to the parent **Node** (many-to-one). |
+| children | Node[] | — | Relation to all child **Nodes** (one-to-many self-relation). |
 | flashcards | Flashcard[] | — | Relation to **Flashcard** (one-to-many). |
 
 ---
