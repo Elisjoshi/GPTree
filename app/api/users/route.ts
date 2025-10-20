@@ -4,7 +4,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { z } from "zod";
-import { CreateUserSchema, CreateUser } from "@/lib/validation_schemas";
+import { CreateUserSchema, type CreateUser } from "@/lib/validation_schemas";
 
 // Create a new user
 export async function POST(req: NextRequest) {

@@ -1,0 +1,53 @@
+import prisma from "../../../lib/prisma";
+import { POST as MakeTree } from '../../../app/api/trees/route';
+import { type CreateTree, TreeSchema } from '../../../lib/validation_schemas';
+import { NextRequest } from 'next/server';
+import { User } from "@/app/generated/prisma";
+
+let first_user: User = {} as User;
+let first_tree: CreateTree = {} as CreateTree;
+beforeAll(async () => {
+    // Clean test db before testing
+    await prisma.tree.deleteMany();
+    await prisma.user.deleteMany();
+
+    // Create a user to own the trees
+    first_user = await prisma.user.create({
+        data: {
+            name: "tree_owner",
+            email: "tree_owner@example.com"
+        }
+    });
+
+    // Create a tree for that user that will be used in tests
+    first_tree = {
+        name: "test_tree_a",
+        userId: first_user.id
+    };
+});
+
+afterAll(async () => {
+        // Clean up
+        await prisma.tree.deleteMany();
+});
+
+describe('Testing tree endpoints', () => {
+    test('Succesfully creates a new tree', async () => {
+        // Make a fake tree request
+        const body: CreateTree = first_tree;
+        const req = new NextRequest('http://fake_url/api/trees', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+        });
+
+        // Now call the route directly
+        const res = await MakeTree(req);
+
+        // Check response
+        expect(res.status).toEqual(201);
+        const created_tree = TreeSchema.parse(await res.json());
+        expect(created_tree.name).toEqual(body.name);
+        expect(created_tree.userId).toEqual(body.userId);
+    });
+});
