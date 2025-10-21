@@ -1,4 +1,4 @@
-## **9\. Coding Guidelines:**
+## Coding Guidelines:
 We will follow established, public style guides and enforce them with automated tooling and review.
 
 TypeScript
