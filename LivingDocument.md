@@ -416,7 +416,7 @@ Our database will be hosted as a PostgreSQL database on Prisma. Prisma ORM will 
 **Development Environment:**
 Development will take place in Visual Studio Code, using GitHub for version control and NPM for package management.
 
-### Team Members
+### Team Structure
 **Brittan: Frontend/Backend**. This team member has experience in the full stack development using [Next.js](http://Next.js) and PostgreSQL. Since GPTree was their idea, they will be helping out on developing and connecting the front and backend, and ensuring general cohesion over the whole project.
 
 **Jungho: Backend**, we need this role to work with AI models and make sure data can be stored nicely into nodes, maintaining correct history per node (a node should contain the context of previous nodes). Is a good fit for the role having worked with OpenAI APIs and is interested in doing more.
@@ -426,6 +426,50 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 **Yana: Frontend and UI/UX**. This is important in order to create an attractive website for users and easy to navigate. It is also important for the website to feel satisfying to use and for people to continue to come back to the website. 
 
 **Jackson: Backend**. This role is necessary to work with user data and the database of trees/related content, as well as the LLM’s that will generate the content that users see. He is a good fit for the role primarily because he is highly interested in learning about developing a backend.
+
+### Project Schedule
+
+| **Milestone**                      | **Task**                                                              | **Dependencies**                                                | **Team / Role**            | **Effort (person-weeks)** | **Success Criteria**                          |
+| ---------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------- | -------------------------- | ------------------------: | --------------------------------------------- |
+| **Requirements & Setup**           | Define functional and non-functional requirements                     | None                                                            | All                        |                       1.0 | Requirements doc in repo and approved         |
+|                                    | Define team policies and set up tools (Discord, GitHub)               | None                                                            | All                        |                       0.5 | Policies in repo; channels and repo active    |
+|                                    | Establish environments and hosting (Vercel, PostgreSQL)               | Policies & tools set up                                         | Backend                    |                       1.0 | Web server reachable; DB connection verified  |
+|                                    | Plan key pages and user journeys (Landing, Tree, Node, Flashcard, SR) | Requirements defined                                            | UI/UX                      |                       0.8 | User-flow map approved                        |
+|                                    | Create low-fidelity wireframes for core pages                         | Page plan complete                                              | UI/UX                      |                       1.0 | Wireframes for Landing/Tree/Node/Flashcard/SR |
+| **Architecture Definition**        | Define overall system architecture (frontend–API–LLM–DB)              | Requirements defined                                            | All                        |                       1.0 | Architecture doc approved                     |
+|                                    | Define Prisma schema (User, Tree, Node, Flashcard)                    | System architecture defined                                     | Backend                    |                       1.0 | Schema migrated; seed runs                    |
+|                                    | Define REST API architecture (REST + LLM endpoints)                   | Prisma schema defined                                           | Backend                    |                       0.8 | Endpoint spec in repo                         |
+|                                    | Component hierarchy diagram and folder layout                         | Wireframes complete                                             | Frontend                   |                       0.5 | Component map in repo                         |
+| **Design Implementation**          | Implement authentication (Google + email with NextAuth)               | Prisma schema defined; API surface defined                      | Backend                    |                       1.0 | Sign-in/out works; session cookie set         |
+|                                    | Build generic UI kit + SCSS structure (buttons, modals, inputs)       | Component hierarchy diagram                                     | Frontend                   |                       1.0 | Reusable components published                 |
+|                                    | Design high-fidelity UI for Landing/Tree/Node                         | Wireframes complete                                             | UI/UX                      |                       1.0 | Approved design spec                          |
+|                                    | Static pages scaffold (Landing, Tree, Node)                           | UI kit ready; hi-fi design ready                                | Frontend                   |                       1.0 | Pages render; basic navigation works          |
+|                                    | Implement REST endpoints (Trees, Nodes, Flashcards)                   | API surface defined; DB live                                    | Backend                    |                       1.0 | REST endpoints pass tests                     |
+| **Integration & Use Cases**        | Connect frontend to REST endpoints                                    | REST endpoints implemented; static pages scaffolded             | Frontend + Backend         |                       1.0 | Fetch/create/update flows working             |
+|                                    | Integrate Groq for node generation (server)                           | API surface defined; DB live                                    | Backend                    |                       1.0 | Structured JSON output with context           |
+|                                    | UC 3.1: User sign in / sign up (UI + flow)                            | Authentication implemented; hi-fi design ready                  | Frontend + UI/UX           |                       0.6 | “Continue with Google/Email” completes        |
+|                                    | UC 3.2: Create a Tree (UI + API + LLM)                                | Groq integrated; frontend–REST connected; designed Tree/Node UI | Frontend + Backend + UI/UX |                       1.0 | Root node generated and persisted             |
+|                                    | UC 3.3: Generate Follow-up Node                                       | UC 3.2 complete; Groq integrated; designed Node UI              | Frontend + Backend + UI/UX |                       1.0 | Child node created with preserved context     |
+|                                    | UC 3.4: View an existing Tree                                         | Frontend–REST connected; designed Tree UI                       | Frontend + UI/UX           |                       0.6 | Tree fetched and rendered; nav ok             |
+|                                    | UC 3.5: View an existing Node                                         | UC 3.4 complete; designed Node UI                               | Frontend + UI/UX           |                       0.5 | Node detail modal/page shows content          |
+|                                    | Global loading/error states + optimistic UX                           | Frontend–REST connected                                         | Frontend                   |                       0.5 | Graceful errors; spinners; retries            |
+|                                    | Initial hallway usability test pass                                   | UC 3.1–3.5 complete                                             | UI/UX                      |                       0.5 | Findings logged; priorities set               |
+| **Flashcards & Spaced Repetition** | Flashcard generation routes (node, tree)                              | REST endpoints implemented; Groq integrated                     | Backend                    |                       1.0 | Persisted cards with references               |
+|                                    | UC 3.6: Generate Flashcards from a Node (UI)                          | Flashcard routes ready; designed Flashcard UI                   | Frontend + UI/UX           |                       0.8 | Cards visible/editable; saved                 |
+|                                    | UC 3.7: Generate Flashcards from a Tree (UI)                          | Node flashcards UI complete; flashcard routes ready             | Frontend + UI/UX           |                       0.8 | Batch generation succeeds                     |
+|                                    | Design SR page high-fidelity spec                                     | Wireframes complete                                             | UI/UX                      |                       0.5 | Approved SR design                            |
+|                                    | Spaced Repetition scheduling logic (EF/intervals)                     | Flashcards persisted                                            | Backend                    |                       1.0 | Next-due dates computed and updated           |
+|                                    | UC 3.8: Spaced Repetition Feed (UI + API)                             | SR logic ready; SR design ready                                 | Frontend + UI/UX + Backend |                       1.0 | Due queue renders and advances                |
+| **Beta Completion**                | App-wide polish: loading/errors/progress indicators                   | UC 3.6–3.8 complete                                             | Frontend                   |                       0.5 | Stable interactions across flows              |
+|                                    | Whole-app UX validation and revisions                                 | App-wide polish in place                                        | UI/UX                      |                       1.0 | Confusing areas resolved                      |
+|                                    | Deploy Beta to Vercel preview                                         | All core use cases complete                                     | Backend                    |                       0.3 | Public preview URL shared                     |
+| **Peer Review & Optimization**     | Peer review and triage                                                | Beta deployed                                                   | All                        |                       1.0 | Issues tracked and assigned                   |
+|                                    | Frontend performance + accessibility pass                             | Peer review complete                                            | Frontend                   |                       0.8 | No major perf/ARIA issues                     |
+|                                    | Backend load/error/security tests                                     | Peer review complete                                            | Backend                    |                       0.8 | No REST/LLM errors under normal load          |
+| **Final Release & Documentation**  | Full end-to-end QA of use cases                                       | Peer fixes complete                                             | All                        |                       1.0 | All UC 3.1–3.8 verified                       |
+|                                    | Production deployment to Vercel                                       | QA complete                                                     | Backend                    |                       0.3 | Stable production URL live                    |
+|                                    | Final docs and presentation                                           | Production live                                                 | All                        |                       1.0 | Report and slides in repo                     |
+| **Retrospective**                  | Individual + team retrospectives                                      | Final release complete                                          | All                        |                       0.5 | Retros posted; action items captured          |
 
 ### Timeline
 
@@ -513,18 +557,80 @@ All Functional Requirements are implemented and tested. A production version is 
 
 Product is released and is ready for presentation. Individual retrospective complete.
 
-### Major risks
+### Risk assessment
 
 * Groq may fail as a LLM provider and we are unable to find affordable and functional alternatives  
-  - We will design our product to be highly modular with regard to both the LLM API provider and the LLM model itself. This will allow us to be able to easily switch both models and providers if ever deemed necessary.
+  - Low liklihood of occuring
+  - High impact if it occurs
+  - The liklihood of it occuring is low because Groq is known for being reliable due to its 
+    performance-focused approach The impact is high because if the Groq fails as an LLM provider, 
+    it could lead to loss of functionality in the website. We as the team would need to refactor 
+    large portions of code and lead to not finishing the project on time. 
+  - Steps you are taking to reduce the likelihood or impact, and steps to permit better estimates;
+  - To reduce the likihood or impact, the team will arefully read API docs to not use any depricated features
+  - To detect if Groq has failed on us, we will look for any thrown API error responses
+  - Should this occur, we would look into what error is being thrown, find where the issue is and debug. We will 
+    design our product to be highly modular with regard to both the LLM API provider and  the LLM model itself. 
+    This will allow us to be able to easily switch both models and providers if ever deemed necessary.
 * Team members may not be able to find enough time for development and the project may fail to stay on schedule.  
-  - To mitigate this, there will be a constant monitoring of progress to ensure that either the team stays on schedule, or the correct steps are made to either adjust the schedule, expectations for the project, or to increase the productivity of the team.
+  - Medium liklihood of occuring
+  - Meduim impact if it occurs
+  - It can be hard to estimate how long a task will take us, especially since we are students and are still learning the pacing
+    of larger projects. It is not rare for a team to find they don't have as much time as they hoped, so although it could be hard,
+    there are many different tatics we can use to overcome this. 
+  - Steps we are taking in order to avoid this from happening are, looking over the schedule, asking the team where they are at and
+    what they are currently working on so everyone is able to be on track.
+  - To detect the problem, we look back at our planned out schedule, making sure we are all on track
+  - To mitigate this, there will be a constant monitoring of progress to ensure that either the team stays on schedule, 
+    or the correct steps are made to either adjust the schedule, expectations for the project, or to increase the productivity of 
+    the team. Additionally, roles in the team will shift in order to help whichever side of the project needs more help.
 * Interactive tree or nodes more complex than expected and blocks core features, causing delays to the release. 
-   - To mitigate this, we will have the frontend working on a UI/UX skeleton of the nodes for the trees that later can be populated with LLM generated information. We will ensure that the frontend and backend on on the same page regarding the data structure of the trees and nodes, so that the frontend is ready for the API response of the backend.
+  - Low liklihood
+  - Low impact to occur
+  - Since we are planning to start out really simple and work our way up to a more complex trees/nodes, we plan to solidify before
+    adding a layer of complexities, so the liklihood should be low. If it was to happen, we would backtrack to our latest design that
+    worked
+  - As previously said, in order to avoid complications with complex tree and node features, we plan to begin with simple implementations,
+    adding layers of complexity once the prevoius layer is solid. We check that a "layer of complexity" is solid with testing. 
+  - To detect this problem we will interact with the website ourselves and use tests to find any issues
+  - To mitigate this, we will have the frontend working on a UI/UX skeleton of the nodes for the trees that later can be 
+   populated with LLM generated information. We will ensure that the frontend and backend on on the same page regarding the data structure of the trees and nodes, so that the frontend is ready for the API response of the backend.
+* May focus too much on the stretch goals, before solidifying the necessary features for the site.
+  - Low liklihood
+  - Meduim impact
+  - At the very beginning of our project planning we chose what our strech goals are, and as long as people stick to the plan, the liklihood
+    it happening are very low. If we do begin to focus to much on the strech goals, we may lose time that should have been used for the 
+    must haves of the project, setting us back.
+  - The steps to avoid this problem are, we plan to communicate what we are working on, double checking that it aligns with the schedule.
+  - We would detect this issue by looking at how much we have completed for the project, and deciding as a team which stretch goals would
+    serve us best for whatever time we may have left before the deadline
+  - To mitigate this, we plan to continue to remind each other of what are the needs and wants of the project and what should be completed
+    for that week
+* Overuse or spikes in traffic could exceed limits, causing service interuptions
+  - Medium liklihood
+  - High impact
+  - The likihood of it happening are meduim because rate limits are common during testing and 
+    scaling phases. The impact is high because if it is triggered, the functionality of the 
+    website relying on the LLM could slow or completely stop.
+  - To reduce the likilihood or impact, we could add caching for repeated queries to lessen API
+    calls
+  - To detect the problem we would monitor the API status code error indicating too many requests
+     in a short period.
+
+### Test plan & bugs
+
+### Documentation plan
+
+* We will document every software component and API endpoints in our Software Design section of this document
+  - Make sure to note how components relate to each other
+  - What endpoints are expecting and doing
+* For users documentation, we will have a help/FAQ page if they are to get stuck at any point while using the site
 
 ### Getting External feedback
 
 External feedback will be the most useful the moment we have a functional backend/frontend. Once it is possible to generate a tree at all, it will be important to get user feedback for structural elements as well as potential ideas for features. As features are tweaked and added, we will want even more feedback. We will get this feedback by consulting friends, acquaintances, and random people in hallways. Ideally they can try out the feature with minimal context, so that we can assess the usability of the product.
+
+
 
 ## **7. Software Architecture**
 
@@ -776,4 +882,3 @@ Guide: [https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Code_sty
 
 We chose this because it follows web standards and stresses readability and accessibility, which keeps styles simple and maintainable.
 Enforcement: Stylelint with the standard config and Prettier for formatting. Continuous integration runs style checks on every pull request. Precommit hooks check changed files. Reviewers confirm selector names, file structure, and comments follow the MDN guidance.
-## **10. Process Description :**
