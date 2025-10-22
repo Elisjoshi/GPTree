@@ -624,6 +624,7 @@ Product is released and is ready for presentation. Individual retrospective comp
 * We will document every software component and API endpoints in our Software Design section of this document
   - Make sure to note how components relate to each other
   - What endpoints are expecting and doing
+* For users documentation, we will have a help/FAQ page if they are to get stuck at any point while using the site
 
 ### Getting External feedback
 
