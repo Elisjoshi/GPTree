@@ -1,6 +1,7 @@
 import prisma from "../../../lib/prisma";
 import { POST as MakeUser } from '../../../app/api/users/route';
 import { GET as GetUser} from '../../../app/api/users/[id]/route';
+import { GET as GetUserTrees } from '../../../app/api/users/[id]/trees/route';
 import { type CreateUser, type User, UserSchema } from '../../../lib/validation_schemas';
 import { NextRequest } from 'next/server';
 
@@ -103,7 +104,7 @@ describe('Testing user endpoints', () => {
         });
 
         // Now call the route directly
-        const res = await GetUser(req, { params: { id: created_user.id } });
+        const res = await GetUser(req, { id: created_user.id });
 
         // Check response
         expect(res.status).toEqual(200);
@@ -119,11 +120,30 @@ describe('Testing user endpoints', () => {
         });
 
         // Now call the route directly
-        const res = await GetUser(req, { params: { id: 'nonexistentid' } });
+        const res = await GetUser(req, { id: 'nonexistentid' } );
         
         // Check response
         expect(res.status).toEqual(200);
         const fetched_user = await res.json();
         expect(fetched_user).toBeNull();
+    });
+
+    test('Successfully gets the trees a user has', async () => {
+        // We can get the user from the first test
+        if (created_user === null) {
+            throw new Error("Created user is null, previous test must have failed");
+        }
+        const req = new NextRequest('http://fake_url/api/users/' + created_user.id + '/trees', {
+            method: 'GET',
+        });
+
+        // Now call the route directly
+        const res = await GetUserTrees(req, { id: created_user.id });
+
+        // Check response
+        expect(res.status).toEqual(200);
+        const trees = await res.json();
+        expect(Array.isArray(trees)).toBe(true);
+        // Further checks can be added here based on the tree structure
     });
 });

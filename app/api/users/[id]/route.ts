@@ -3,14 +3,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { z } from "zod";
-import { GetUserById, GetUserByIdSchema } from "@/lib/validation_schemas";
+import { GetByUserId, GetByUserIdSchema } from "@/lib/validation_schemas";
 
 // Get a user by id
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, params: GetByUserId) {
     try {
         // Read and parse the request
-        const data: GetUserById = GetUserByIdSchema.parse(params);
-
+        const data: GetByUserId = GetByUserIdSchema.parse(params);
 
         // Get the user
         const user = await prisma.user.findUnique({

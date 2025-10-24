@@ -10,7 +10,6 @@ export async function POST(request: NextRequest) {
     try {
         // Read and parse the request
         const body = await request.json();
-        console.log("Received body for tree creation:", body);
         const data: CreateTree = CreateTreeSchema.parse(body);
 
         // Create the tree

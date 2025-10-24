@@ -1,4 +1,5 @@
-// We use this route to create users
+// We use this route to create users, although nextauth usaually handles that
+// Still, in case we want to make one manually we have it
 // (Maybe also use it to get a list of users later)
 
 import { NextRequest, NextResponse } from "next/server";
