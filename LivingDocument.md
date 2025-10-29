@@ -427,135 +427,56 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 
 **Jackson: Backend**. This role is necessary to work with user data and the database of trees/related content, as well as the LLM’s that will generate the content that users see. He is a good fit for the role primarily because he is highly interested in learning about developing a backend.
 
-### Project Schedule
-
-| **Milestone**                      | **Task**                                                              | **Dependencies**                                                | **Team / Role**            | **Effort (person-weeks)** | **Success Criteria**                          |
-| ---------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------- | -------------------------- | ------------------------: | --------------------------------------------- |
-| **Requirements & Setup**           | Define functional and non-functional requirements                     | None                                                            | All                        |                       1.0 | Requirements doc in repo and approved         |
-|                                    | Define team policies and set up tools (Discord, GitHub)               | None                                                            | All                        |                       0.5 | Policies in repo; channels and repo active    |
-|                                    | Establish environments and hosting (Vercel, PostgreSQL)               | Policies & tools set up                                         | Backend                    |                       1.0 | Web server reachable; DB connection verified  |
-|                                    | Plan key pages and user journeys (Landing, Tree, Node, Flashcard, SR) | Requirements defined                                            | UI/UX                      |                       0.8 | User-flow map approved                        |
-|                                    | Create low-fidelity wireframes for core pages                         | Page plan complete                                              | UI/UX                      |                       1.0 | Wireframes for Landing/Tree/Node/Flashcard/SR |
-| **Architecture Definition**        | Define overall system architecture (frontend–API–LLM–DB)              | Requirements defined                                            | All                        |                       1.0 | Architecture doc approved                     |
-|                                    | Define Prisma schema (User, Tree, Node, Flashcard)                    | System architecture defined                                     | Backend                    |                       1.0 | Schema migrated; seed runs                    |
-|                                    | Define REST API architecture (REST + LLM endpoints)                   | Prisma schema defined                                           | Backend                    |                       0.8 | Endpoint spec in repo                         |
-|                                    | Component hierarchy diagram and folder layout                         | Wireframes complete                                             | Frontend                   |                       0.5 | Component map in repo                         |
-| **Design Implementation**          | Implement authentication (Google + email with NextAuth)               | Prisma schema defined; API surface defined                      | Backend                    |                       1.0 | Sign-in/out works; session cookie set         |
-|                                    | Build generic UI kit + SCSS structure (buttons, modals, inputs)       | Component hierarchy diagram                                     | Frontend                   |                       1.0 | Reusable components published                 |
-|                                    | Design high-fidelity UI for Landing/Tree/Node                         | Wireframes complete                                             | UI/UX                      |                       1.0 | Approved design spec                          |
-|                                    | Static pages scaffold (Landing, Tree, Node)                           | UI kit ready; hi-fi design ready                                | Frontend                   |                       1.0 | Pages render; basic navigation works          |
-|                                    | Implement REST endpoints (Trees, Nodes, Flashcards)                   | API surface defined; DB live                                    | Backend                    |                       1.0 | REST endpoints pass tests                     |
-| **Integration & Use Cases**        | Connect frontend to REST endpoints                                    | REST endpoints implemented; static pages scaffolded             | Frontend + Backend         |                       1.0 | Fetch/create/update flows working             |
-|                                    | Integrate Groq for node generation (server)                           | API surface defined; DB live                                    | Backend                    |                       1.0 | Structured JSON output with context           |
-|                                    | UC 3.1: User sign in / sign up (UI + flow)                            | Authentication implemented; hi-fi design ready                  | Frontend + UI/UX           |                       0.6 | “Continue with Google/Email” completes        |
-|                                    | UC 3.2: Create a Tree (UI + API + LLM)                                | Groq integrated; frontend–REST connected; designed Tree/Node UI | Frontend + Backend + UI/UX |                       1.0 | Root node generated and persisted             |
-|                                    | UC 3.3: Generate Follow-up Node                                       | UC 3.2 complete; Groq integrated; designed Node UI              | Frontend + Backend + UI/UX |                       1.0 | Child node created with preserved context     |
-|                                    | UC 3.4: View an existing Tree                                         | Frontend–REST connected; designed Tree UI                       | Frontend + UI/UX           |                       0.6 | Tree fetched and rendered; nav ok             |
-|                                    | UC 3.5: View an existing Node                                         | UC 3.4 complete; designed Node UI                               | Frontend + UI/UX           |                       0.5 | Node detail modal/page shows content          |
-|                                    | Global loading/error states + optimistic UX                           | Frontend–REST connected                                         | Frontend                   |                       0.5 | Graceful errors; spinners; retries            |
-|                                    | Initial hallway usability test pass                                   | UC 3.1–3.5 complete                                             | UI/UX                      |                       0.5 | Findings logged; priorities set               |
-| **Flashcards & Spaced Repetition** | Flashcard generation routes (node, tree)                              | REST endpoints implemented; Groq integrated                     | Backend                    |                       1.0 | Persisted cards with references               |
-|                                    | UC 3.6: Generate Flashcards from a Node (UI)                          | Flashcard routes ready; designed Flashcard UI                   | Frontend + UI/UX           |                       0.8 | Cards visible/editable; saved                 |
-|                                    | UC 3.7: Generate Flashcards from a Tree (UI)                          | Node flashcards UI complete; flashcard routes ready             | Frontend + UI/UX           |                       0.8 | Batch generation succeeds                     |
-|                                    | Design SR page high-fidelity spec                                     | Wireframes complete                                             | UI/UX                      |                       0.5 | Approved SR design                            |
-|                                    | Spaced Repetition scheduling logic (EF/intervals)                     | Flashcards persisted                                            | Backend                    |                       1.0 | Next-due dates computed and updated           |
-|                                    | UC 3.8: Spaced Repetition Feed (UI + API)                             | SR logic ready; SR design ready                                 | Frontend + UI/UX + Backend |                       1.0 | Due queue renders and advances                |
-| **Beta Completion**                | App-wide polish: loading/errors/progress indicators                   | UC 3.6–3.8 complete                                             | Frontend                   |                       0.5 | Stable interactions across flows              |
-|                                    | Whole-app UX validation and revisions                                 | App-wide polish in place                                        | UI/UX                      |                       1.0 | Confusing areas resolved                      |
-|                                    | Deploy Beta to Vercel preview                                         | All core use cases complete                                     | Backend                    |                       0.3 | Public preview URL shared                     |
-| **Peer Review & Optimization**     | Peer review and triage                                                | Beta deployed                                                   | All                        |                       1.0 | Issues tracked and assigned                   |
-|                                    | Frontend performance + accessibility pass                             | Peer review complete                                            | Frontend                   |                       0.8 | No major perf/ARIA issues                     |
-|                                    | Backend load/error/security tests                                     | Peer review complete                                            | Backend                    |                       0.8 | No REST/LLM errors under normal load          |
-| **Final Release & Documentation**  | Full end-to-end QA of use cases                                       | Peer fixes complete                                             | All                        |                       1.0 | All UC 3.1–3.8 verified                       |
-|                                    | Production deployment to Vercel                                       | QA complete                                                     | Backend                    |                       0.3 | Stable production URL live                    |
-|                                    | Final docs and presentation                                           | Production live                                                 | All                        |                       1.0 | Report and slides in repo                     |
-| **Retrospective**                  | Individual + team retrospectives                                      | Final release complete                                          | All                        |                       0.5 | Retros posted; action items captured          |
-
-### Timeline
-
-##### End Of Week 3 - Requirements & Team Policies
-GPTree functional and non-functional requirements are solidified. Team processes are documented.
-* UI/UX:  
-  - Planning what features are needed and what each part of the website should do and look like  
-* Frontend: 
-  - Set up structure and basic pages, simple navigation  
-* Backend:
-  - Get webserver and database online
-
-##### End Of Week 4 - Architecture
-System architecture is defined, including data flow, LLM integration, database schema, and API structure. Key UI/UX elements such as Trees, Nodes, Edges, and Flash Cards have prototype designs. 
-* UI/UX:  
-  - Begin whiteboard process for landing page, tree page, SR learning page, create rough designs/wireframe 
-* Frontend: 
-  - Define component hierarchy and page layouts.
-* Backend:
-  - Define Prisma Schema for key entities.
-
-##### End Of Week 5 - Design
-Detailed definition of all software components has been completed, including packages, classes, and units of abstraction.  Users can now sign in
-* UI/UX:  
-  - Design for key components have been completed and are able to be implemented as React components styled with .scss.
-* Frontend: 
-  - A skeleton model of the tree and nodes have been designed and now are awaiting backend integration.
-  - User sign on page and landing page are functional
-* Backend:
-  - All REST endpoints have been defined for basic entities. This means that the frontend can create DB requests for Trees, Nodes, Users, Flash Cards, etc.
-  - Routes for User sign on have been created using nextJS OAuth
-
-##### End Of Week 6 - Testing and Continuous Integration
-Users can now Create Trees and generate Nodes. User testing begins (hallway testing, friends, etc)
-* UI/UX:
-  - Design patterns are created for generic components as needed and exist on a design doc.
-  - UX tests are created and documented. Results of testing are documented as well.
-* Frontend:
-  - Tree and Nodes now support LLM generation using backend. Users can now create trees, create nodes, view trees, and view nodes.
-* Backend:
-  - Routes have been written connecting to Groq, allowing Frontend to make requests to LLMs. Requests both for a new tree and a follow-up node are defined and are able to maintain the context of the conversation.
-
-##### End Of Week 7 - Implementation and Documentation
-Support for Flash Cards is added, and the Spaced Repetition Page is in progress, using a similar framework as the Flash Cards.
-* UI/UX:
-  -  Design pattern for Flash Cards has been finalized. In addition the design pattern for the spaced repetition page is finalized.
-  - UX Testing of Flash Cards is written and begins.
-* Frontend:
-  - Functionality for Flash Card feature is added. This includes the buttons to generate flash cards and the page to view it.
-* Backend:
-  - Additional Routes are added for the creation of Flash Cards for both single nodes and trees. Database has been modified to support spaced repetition page and most server request routes are completed.
-
-#### End of Week 8 - Beta Release
-Spaced Repetition Page is functional. Thus all functional requirements are at least in beta phase
-* UI/UX:
-  -  Validate design with UX testing, revise, and fix confusing areas  
-  - Testing begins for app as a whole
-* Frontend:
-  - Display node content with loading/error states, tighten up the basic interactions  
-* Backend:
-  -  Generate follow up nodes to predict future questions
-
-##### End Of Week 9 - Peer Review
-All functional requirements have gone through peer review, feedback is documented and is being addressed
-
-* UI/UX:
-  - UX is throughly tested by all developers and by random users (hallway test)
-* Frontend:
-  - Final exhaustive testing of frontend / polish. Efforts are made to optimize ease of use. Bugs are fixed and quality of life features are implemented.
-* Backend:
-  - Final exhaustive testing of backend. There are no unexpected REST errors. 
-
-##### End Of Week 10 - Final Release
-All Functional Requirements are implemented and tested. A production version is released with a public url.
-
-* UI/UX:
-  - UX is throughly tested by all developers and by random users.
-* Frontend:
-  - Final exhaustive testing of frontend / polish. Efforts are made to optimize ease of use.
-* Backend:
-  - Final exhaustive testing of backend. There are no unexpected REST errors. 
-  - App is moved to production on Vercel.
-
-##### End Of Week 11 - Individual retrospective
-
-Product is released and is ready for presentation. Individual retrospective complete.
+| **Week** | **Milestone**                      | **Task**                                                              | **Dependencies**                                                | **Team / Role**            | **Effort (person-weeks)** | **Success Criteria**                          |
+| -------- | ---------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------- | -------------------------- | ------------------------: | --------------------------------------------- |
+| **Week 3** | **Requirements & Setup**           | Define functional and non-functional requirements                     | None                                                            | All                        |                       1.0 | Requirements doc in repo and approved         |
+|          |                                    | Define team policies and set up tools (Discord, GitHub)               | None                                                            | All                        |                       0.5 | Policies in repo; channels and repo active    |
+|          |                                    | Establish environments and hosting (Vercel, PostgreSQL)               | Policies & tools set up                                         | Backend                    |                       1.0 | Web server reachable; DB connection verified  |
+|          |                                    | Plan key pages and user journeys (Landing, Tree, Node, Flashcard, SR) | Requirements defined                                            | UI/UX                      |                       0.8 | User-flow map approved                        |
+|          |                                    | Create low-fidelity wireframes for core pages                         | Page plan complete                                              | UI/UX                      |                       1.0 | Wireframes for Landing/Tree/Node/Flashcard/SR |
+|          |                                    | **Timeline Detail:** GPTree functional and non-functional requirements are solidified. Team processes are documented. *UI/UX:* Planning what features are needed and what each part of the website should do and look like. *Frontend:* Set up structure and basic pages, simple navigation. *Backend:* Get webserver and database online. | — | — | — | — |
+| **Week 4** | **Architecture Definition**        | Define overall system architecture (frontend–API–LLM–DB)              | Requirements defined                                            | All                        |                       1.0 | Architecture doc approved                     |
+|          |                                    | Define Prisma schema (User, Tree, Node, Flashcard)                    | System architecture defined                                     | Backend                    |                       1.0 | Schema migrated; seed runs                    |
+|          |                                    | Define REST API architecture (REST + LLM endpoints)                   | Prisma schema defined                                           | Backend                    |                       0.8 | Endpoint spec in repo                         |
+|          |                                    | Component hierarchy diagram and folder layout                         | Wireframes complete                                             | Frontend                   |                       0.5 | Component map in repo                         |
+|          |                                    | **Timeline Detail:** System architecture is defined, including data flow, LLM integration, database schema, and API structure. Key UI/UX elements such as Trees, Nodes, Edges, and Flash Cards have prototype designs. *UI/UX:* Begin whiteboard process for landing page, tree page, SR learning page, create rough designs/wireframe. *Frontend:* Define component hierarchy and page layouts. *Backend:* Define Prisma Schema for key entities. | — | — | — | — |
+| **Week 5** | **Design Implementation**          | Implement authentication (Google + email with NextAuth)               | Prisma schema defined; API surface defined                      | Backend                    |                       1.0 | Sign-in/out works; session cookie set         |
+|          |                                    | Build generic UI kit + SCSS structure (buttons, modals, inputs)       | Component hierarchy diagram                                     | Frontend                   |                       1.0 | Reusable components published                 |
+|          |                                    | Design high-fidelity UI for Landing/Tree/Node                         | Wireframes complete                                             | UI/UX                      |                       1.0 | Approved design spec                          |
+|          |                                    | Static pages scaffold (Landing, Tree, Node)                           | UI kit ready; hi-fi design ready                                | Frontend                   |                       1.0 | Pages render; basic navigation works          |
+|          |                                    | Implement REST endpoints (Trees, Nodes, Flashcards)                   | API surface defined; DB live                                    | Backend                    |                       1.0 | REST endpoints pass tests                     |
+|          |                                    | **Timeline Detail:** Detailed definition of all software components has been completed, including packages, classes, and units of abstraction. Users can now sign in. *UI/UX:* Design for key components have been completed and are able to be implemented as React components styled with .scss. *Frontend:* Skeleton model of the tree and nodes designed, user sign on page and landing page functional. *Backend:* All REST endpoints defined for basic entities, routes for User sign on created using nextJS OAuth. | — | — | — | — |
+| **Week 6** | **Integration & Use Cases**        | Connect frontend to REST endpoints                                    | REST endpoints implemented; static pages scaffolded             | Frontend + Backend         |                       1.0 | Fetch/create/update flows working             |
+|          |                                    | Integrate Groq for node generation (server)                           | API surface defined; DB live                                    | Backend                    |                       1.0 | Structured JSON output with context           |
+|          |                                    | UC 3.1: User sign in / sign up (UI + flow)                            | Authentication implemented; hi-fi design ready                  | Frontend + UI/UX           |                       0.6 | “Continue with Google/Email” completes        |
+|          |                                    | UC 3.2: Create a Tree (UI + API + LLM)                                | Groq integrated; frontend–REST connected; designed Tree/Node UI | Frontend + Backend + UI/UX |                       1.0 | Root node generated and persisted             |
+|          |                                    | UC 3.3: Generate Follow-up Node                                       | UC 3.2 complete; Groq integrated; designed Node UI              | Frontend + Backend + UI/UX |                       1.0 | Child node created with preserved context     |
+|          |                                    | UC 3.4: View an existing Tree                                         | Frontend–REST connected; designed Tree UI                       | Frontend + UI/UX           |                       0.6 | Tree fetched and rendered; nav ok             |
+|          |                                    | UC 3.5: View an existing Node                                         | UC 3.4 complete; designed Node UI                               | Frontend + UI/UX           |                       0.5 | Node detail modal/page shows content          |
+|          |                                    | Global loading/error states + optimistic UX                           | Frontend–REST connected                                         | Frontend                   |                       0.5 | Graceful errors; spinners; retries            |
+|          |                                    | Initial hallway usability test pass                                   | UC 3.1–3.5 complete                                             | UI/UX                      |                       0.5 | Findings logged; priorities set               |
+|          |                                    | **Timeline Detail:** Users can now create Trees and generate Nodes. User testing begins. *UI/UX:* Design patterns created, UX tests documented. *Frontend:* Tree and Nodes now support LLM generation using backend. *Backend:* Routes written connecting to Groq for tree and follow-up node creation maintaining context. | — | — | — | — |
+| **Week 7** | **Flashcards & Spaced Repetition** | Flashcard generation routes (node, tree)                              | REST endpoints implemented; Groq integrated                     | Backend                    |                       1.0 | Persisted cards with references               |
+|          |                                    | UC 3.6: Generate Flashcards from a Node (UI)                          | Flashcard routes ready; designed Flashcard UI                   | Frontend + UI/UX           |                       0.8 | Cards visible/editable; saved                 |
+|          |                                    | UC 3.7: Generate Flashcards from a Tree (UI)                          | Node flashcards UI complete; flashcard routes ready             | Frontend + UI/UX           |                       0.8 | Batch generation succeeds                     |
+|          |                                    | Design SR page high-fidelity spec                                     | Wireframes complete                                             | UI/UX                      |                       0.5 | Approved SR design                            |
+|          |                                    | Spaced Repetition scheduling logic (EF/intervals)                     | Flashcards persisted                                            | Backend                    |                       1.0 | Next-due dates computed and updated           |
+|          |                                    | UC 3.8: Spaced Repetition Feed (UI + API)                             | SR logic ready; SR design ready                                 | Frontend + UI/UX + Backend |                       1.0 | Due queue renders and advances                |
+|          |                                    | **Timeline Detail:** Support for Flash Cards is added, and Spaced Repetition Page in progress. *UI/UX:* Flashcard and SR design finalized, UX Testing begins. *Frontend:* Flashcard generation and viewing functional. *Backend:* Routes for Flashcards added for nodes and trees, DB supports SR. | — | — | — | — |
+| **Week 8** | **Beta Completion**                | App-wide polish: loading/errors/progress indicators                   | UC 3.6–3.8 complete                                             | Frontend                   |                       0.5 | Stable interactions across flows              |
+|          |                                    | Whole-app UX validation and revisions                                 | App-wide polish in place                                        | UI/UX                      |                       1.0 | Confusing areas resolved                      |
+|          |                                    | Deploy Beta to Vercel preview                                         | All core use cases complete                                     | Backend                    |                       0.3 | Public preview URL shared                     |
+|          |                                    | **Timeline Detail:** Spaced Repetition Page functional; all functional requirements in beta. *UI/UX:* Validate design with UX testing, revise confusing areas, test app as a whole. *Frontend:* Display node content with loading/error states. *Backend:* Generate follow up nodes to predict future questions. | — | — | — | — |
+| **Week 9** | **Peer Review & Optimization**     | Peer review and triage                                                | Beta deployed                                                   | All                        |                       1.0 | Issues tracked and assigned                   |
+|          |                                    | Frontend performance + accessibility pass                             | Peer review complete                                            | Frontend                   |                       0.8 | No major perf/ARIA issues                     |
+|          |                                    | Backend load/error/security tests                                     | Peer review complete                                            | Backend                    |                       0.8 | No REST/LLM errors under normal load          |
+|          |                                    | **Timeline Detail:** All functional requirements peer-reviewed; feedback documented and addressed. *UI/UX:* Thorough UX testing. *Frontend:* Final polish and bug fixes. *Backend:* No unexpected REST errors. | — | — | — | — |
+| **Week 10** | **Final Release & Documentation**  | Full end-to-end QA of use cases                                       | Peer fixes complete                                             | All                        |                       1.0 | All UC 3.1–3.8 verified                       |
+|          |                                    | Production deployment to Vercel                                       | QA complete                                                     | Backend                    |                       0.3 | Stable production URL live                    |
+|          |                                    | Final docs and presentation                                           | Production live                                                 | All                        |                       1.0 | Report and slides in repo                     |
+|          |                                    | **Timeline Detail:** All functional requirements implemented and tested. Production version released with public URL. *UI/UX:* UX thoroughly tested by developers and users. *Frontend:* Final polish and QoL improvements. *Backend:* Production release on Vercel. | — | — | — | — |
+| **Week 11** | **Retrospective**                  | Individual + team retrospectives                                      | Final release complete                                          | All                        |                       0.5 | Retros posted; action items captured          |
+|          |                                    | **Timeline Detail:** Product released and ready for presentation. Individual retrospective complete. | — | — | — | — |
 
 ### Risk assessment
 
@@ -665,6 +586,8 @@ External feedback will be the most useful the moment we have a functional backen
 
 
 ## **7. Software Architecture**
+
+![Architecture Diagram](./devDiagrams/arch%20diagram.webp)
 
 ### 7.1 Overview of System Architecture
 
@@ -816,7 +739,9 @@ The first four models — User, Account, Session, and VerificationToken — are 
 One large assumption we’re making is that the responses we get from Groq will be generally acceptable to the user. There’s a limit to what we can do to prevent or handle hallucinations, especially with more complex topics that we might not account for during development. While this is a risk we would have to mitigate with any LLM, it’s a general assumption that the majority of what the user gets back will be of good quality. If, for whatever reason, the LLM we have spits out incorrect, misleading, or confusing information, it would compromise the quality of GPTree, meaning we need to be especially cautious when working with the LLM component of our system (as in choosing what context we give it, how user questions convert to prompts, etc.).
 
 ### 7.5 Decisions and Alternatives
-One decision we made is to use Next.js as our framework, but we could have chosen something else like Remix. Next.js has a more traditional separation between client side code and server side code, while Remix has files that contain both. A big pro for Next.js is that our team members are familiar with this framework, either from personal projects or work done in another CSE class at UW, which means we can spend less time learning how it works. Remix is entirely different, and its learning curve can be steep, which could end up being costly to our schedule. That said, Next.js isn’t perfect, and after getting over the initial learning curve for Remix, it’s possible that the streamlined methods to make API calls (loader and action methods in Remix) would be easier to write/implement than much of the tedious work to write, handle, and parse fetch methods. We still think that our familiarity with Next.js, as well as its frequent use (and already optimized integration) with other parts of our stack like Prisma and Vercel offers enough of an advantage to choose it over Remix.
+One of the core architectural decisions for GPTree was to adopt a Model–View–Controller (MVC) structure within our web framework. This style organizes the system into three main components: the Model, represented by our Prisma schema and database logic; the View, consisting of React and Next.js pages that render Trees, Nodes, and Flashcards; and the Controller, which corresponds to our API routes that coordinate between user actions and backend logic. An alternative to this decision would be used a simple client-server architecture model. The pros of this alternative is mainly the simplicity of the architecture, and may allow us to change certain details on the fly as needed. But in general the cons of a poorly defined architecture without much detail overrides the pros, and for this reason we use the MVC architecture.
+
+An additional architectural decision that we made we was to not have any asynchronus pipelines, which was considered to support our spaced repetition learning feature. This would have followed a queue-based model, where flashcard updates and scheduling calculations occur independently of user actions. While that approach could scale well for a large user base and offload work from the client, it would also introduce additional system complexity—requiring persistent job queues, worker processes, and more coordination between services. Instead, we chose instead to favor simplicity and find ways to calculate which items should be in the feed during a single GET request based on time-stamp data and pre-generated flash cards.
 
 Another decision was to use Prisma instead of another ORM (object relational mapper, I.E. the abstraction between a normal RDB and one with objects) such as Drizzle. Our choice to use Next.js as our framework is crucial in choosing an ORM, as different options have different levels of compatibility with our chosen framework. In this case, Prisma has Next.js guides in its official documentation, and very deep integration with Next.js, meaning that, not only is using Prisma in our project easier, but troubleshooting will also be easier because of the larger amount of tutorials, guides, and support that other developers have created. Drizzle does offer its own advantages though, most notably, its similarity to traditional SQL. Writing a query in Drizzle is slightly more explicit than in Prisma, and as a result, slightly more intuitive. This means that we could spend less time trying to learn new methods and query techniques, and rely on prior knowledge about SQL. Considering the time we’ve ‘saved’ by choosing Next.js, however, it’s reasonable to allocate some extra time to familiarize ourselves with Prisma, as its integration with Next.js will most likely make our lives much easier when working with our database farther down the line.
 
@@ -896,21 +821,3 @@ Another decision was to use Prisma instead of another ORM (object relational map
 - **Vercel** deploys the Next.js app; API routes run as serverless functions.  
 - **Prisma** connects to the hosted PostgreSQL database at runtime.  
 - Preview deployments are used for feature branches.
-
-
-## **9. Coding Guidelines:**
-We will follow established, public style guides and enforce them with automated tooling and review.
-
-TypeScript
-
-Guide: [https://ts.dev/style/#visibility]
-
-We chose this because it is clear and practical. It explains naming, imports, visibility, and API design so our code stays consistent and easy to review.
-Enforcement: ESLint with TypeScript rules and Prettier for auto formatting. Continuous integration runs lint and format checks on every pull request. Precommit hooks run the same checks before a commit. Code reviews use a short style checklist.
-
-CSS
-
-Guide: [https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Code_style_guide/CSS]
-
-We chose this because it follows web standards and stresses readability and accessibility, which keeps styles simple and maintainable.
-Enforcement: Stylelint with the standard config and Prettier for formatting. Continuous integration runs style checks on every pull request. Precommit hooks check changed files. Reviewers confirm selector names, file structure, and comments follow the MDN guidance.
