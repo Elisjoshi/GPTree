@@ -821,3 +821,17 @@ Another decision was to use Prisma instead of another ORM (object relational map
 - **Vercel** deploys the Next.js app; API routes run as serverless functions.  
 - **Prisma** connects to the hosted PostgreSQL database at runtime.  
 - Preview deployments are used for feature branches.
+
+## **Developer Documentation**
+
+Clone `git@github.com:Britwad/GPTree.git` or `https://github.com/Britwad/GPTree.git` and change into the project directory. Run `npm install` to fetch dependencies. Copy `.env.example` to `.env` and fill the values for Google auth, the database URL, and the Groq key. You can use a local PostgreSQL instance or start one with Docker compose. There are no submodules.
+
+The `app` folder holds the Next.js application and the API route handlers under `app/api`. The `components` folder contains reusable React components. The `lib` folder contains helpers such as the Prisma client and auth utilities. The `prisma` folder contains the Prisma schema, migrations, and the seed script. The `test` folder contains Jest tests. The `types` folder holds shared TypeScript types. The `public` folder serves static assets. Repository documents such as the living document and coding guidelines live at the root along with configuration files like `jest.config.js`, `next.config.ts`, and `tsconfig.json`.
+
+Ensure a PostgreSQL database is reachable and that `DATABASE_URL` is set in `.env`. Generate the Prisma client with `npx prisma generate` and apply migrations with `npx prisma migrate dev` for development or `npx prisma migrate deploy` for production. Build the application with `npm run build` and start it with `npm start`. During development you can run `npm run dev` to launch the local server at `http://localhost:3000`.
+
+Run `npm test` to execute the Jest test suite. No extra setup is required after `npm install`. Tests run against the application code and use mocks for external services. If you need integration tests with a database, point `DATABASE_URL` to a dedicated test database. Use `npm run test:watch` for watch mode and `npm run test:cov` for coverage when those scripts are present in `package.json`.
+
+Add tests in the `test` folder and name each file after what it covers with a `.test.ts` suffix, for example `user_routes.test.ts`. Group related tests with a `describe` block whose string clearly names the subject, such as `testing tree route` or `tree routes`. Each behavior should be checked in a separate `it` block that reads like a sentence, for example `adds a tree to the database`. Use `beforeAll`, `afterAll`, and `beforeEach` for setup and cleanup, such as resetting or seeding the database. Assertions use Jest’s `expect` API to compare actual results with expected results. Keep tests deterministic by mocking external services like the LLM adapter and any network requests. For route tests, Supertest can be used once a lightweight test server helper is added to the repo.
+
+We are a webapp and the analogous release artifact is a Vercel production deployment of the Next.js build.
