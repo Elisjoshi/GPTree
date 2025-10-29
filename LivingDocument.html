@@ -1,31 +1,372 @@
-<!DOCTYPE html><html><head>
-      <title>LivingDocument</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      
-      <link rel="stylesheet" href="file:///c:\Users\britt\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.19\crossnote\dependencies\katex\katex.min.css">
-      
-      
-      
-      
-      
-      <style>
-      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
-/* Please visit the URL below for more information: */
-/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+<!DOCTYPE html>
+<html>
+<head>
+<title>LivingDocument.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
-      </style>
-      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function () {
-    // your code here
-  });
-</script></head><body for="html-export">
-    
-    
-      <div class="crossnote markdown-preview  ">
-      
-<h1 id="gptree-living-document"><strong>GPTree: Living Document</strong> </h1>
-<h2 id="1-team-info"><strong>1. Team info:</strong> </h2>
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="gptree-living-document"><strong>GPTree: Living Document</strong></h1>
+<h2 id="1-team-info"><strong>1. Team info:</strong></h2>
 <ul>
 <li>Brittan Wadsworth: [ Frontend / Backend ]</li>
 <li>Richman Pham: [ UI designer / Frontend  ]</li>
@@ -43,7 +384,7 @@
 <li>Team members should still feel free to message and respond outside of active hours</li>
 <li>Team members acknowledge that quick responses are extreamely helpful for the group cause, and will make efforts to respond sooner than later, especially for time-sensitive tasks.</li>
 </ul>
-<h2 id="2-product-description"><strong>2. Product description:</strong> </h2>
+<h2 id="2-product-description"><strong>2. Product description:</strong></h2>
 <p><strong>Abstract</strong>:<br>
 ChatGPT and other LLMs are incredible tools for conversational learning. They provide the user with the opportunity to pursue personal learning at their own pace on their own time. However, ChatGPT currently does not cover all the needs of those interested in personal learning. It is difficult to explore previous conversations, and users often only read the results of an LLM once. GPTree aims to solve these issues, and to create a cohesive framework for learning. Learning node by node, asking follow-up questions, users will effectively be generating their own personal textbooks. Under this framework, there are many additional features that can be incorporated. These include flashcard generations, tests of understanding, and utilization of space repetition learning principles to encourage long term understanding. This platform aims to be as broad as possible, without specific topics or courses, and will only restrict users when they are not requesting informative content.</p>
 <p><strong>Goal:</strong><br>
@@ -53,8 +394,8 @@ While there are an array of existing tools for education using AI, these tools a
 <ul>
 <li>ChatGPT Study mode, is a specialized chat window that emphasizes understanding rather than immediate answers</li>
 <li>Oboe.fyi Generates a course upon user request that can be revisited, with potential follow up courses</li>
-<li><a href="http://YouLearn.ai">YouLearn.ai</a> Helps you understand your schoolwork by letting users upload textbooks or videos as reference points to be broken down and understood.</li>
-<li><a href="http://Learningro.com">Learningro.com</a> Uses AI to create personal learning experiences for students and to help teachers.</li>
+<li>YouLearn.ai Helps you understand your schoolwork by letting users upload textbooks or videos as reference points to be broken down and understood.</li>
+<li>Learningro.com Uses AI to create personal learning experiences for students and to help teachers.</li>
 </ul>
 <p>For users who go to ChatGPT or other major LLMs to learn, they often get overwhelmed with the quantity of information that results. It can be easy to lose track of what ground has been covered, and there is little to no accountability for knowledge retention. These other platforms are often scope limited to just school, with a focus on personalized learning experiences.</p>
 <p><strong>Novelty</strong>:<br>
@@ -89,9 +430,9 @@ To mitigate risks related to LLM output variability, we will do the following:</
 <li>A new node is created off of an existing node whenever a follow up question is asked relative to a node. For example if a user had a node about eigenvectors, a new node could be created after asking “what is a determinant” inside the “eigenvector” node.</li>
 <li>A single node finishes generation once the LLM is done responding (it usually finishes on its own, and for rare cases we can have a max-output length).</li>
 </ul>
-<h2 id="3-use-cases-functional-requirements"><strong>3. Use Cases (Functional Requirements):</strong> </h2>
-<h3 id="30-pages-and-visual-elements"><strong>3.0. Pages and Visual Elements</strong> </h3>
-<h4 id="pages">Pages </h4>
+<h2 id="3-use-cases-functional-requirements"><strong>3. Use Cases (Functional Requirements):</strong></h2>
+<h3 id="30-pages-and-visual-elements"><strong>3.0. Pages and Visual Elements</strong></h3>
+<h4 id="pages">Pages</h4>
 <ul>
 <li><strong>View Tree</strong> - Here users will be presented with a visual tree of the generated nodes, they will have the option to click on nodes, or to create a new node off of an existing node by asking a follow-up question.
 <ul>
@@ -101,17 +442,17 @@ To mitigate risks related to LLM output variability, we will do the following:</
 </li>
 <li><strong>Spaced Repetition Page</strong> - Here users will be presented a feed of <strong>Flash Cards</strong> based on the trees that they have generated. These <strong>Flash Cards</strong> will be presented using a spaced repetition scheduler, which will keep track of the user's success rate in remembering the information on the flash card.</li>
 </ul>
-<h4 id="visual-elements">Visual Elements </h4>
+<h4 id="visual-elements">Visual Elements</h4>
 <ul>
-<li><strong>Node</strong> - A clickable element that contains a single LLM generation of text relevant to the user's topic of interest. From any node users can ask "follow-up questions" that lead to the creation of a new, and connected, node whose generated text answers the follow up question. Users can generate a set of Flashcards based on the information contained in a node.</li>
+<li><strong>Node</strong> - A clickable element that contains a single LLM generation of text relevant to the user's topic of interest. From any node users can ask &quot;follow-up questions&quot; that lead to the creation of a new, and connected, node whose generated text answers the follow up question. Users can generate a set of Flashcards based on the information contained in a node.</li>
 <li><strong>Tree</strong> - A set of connected <strong>Nodes</strong>, with a root <strong>Node</strong>. The main functionality of <strong>Gptree</strong> is letting user's create, expand, and navigate these <strong>trees</strong>.</li>
 <li><strong>Flash Card</strong> - A flash card represents a question / answer pair of text, which will be generated by an LLM to help users review and study information from <strong>Nodes</strong> or <strong>Trees</strong>.</li>
 </ul>
 <p><em>All following use cases will be between two actors: <strong>User</strong> and <strong>System</strong></em></p>
-<h3 id="31-user-sign-in--sign-up"><strong>3.1. User Sign in / Sign up</strong> </h3>
+<h3 id="31-user-sign-in--sign-up"><strong>3.1. User Sign in / Sign up</strong></h3>
 <p><strong>Triggers</strong></p>
 <ul>
-<li>User clicks "Get Started" button</li>
+<li>User clicks &quot;Get Started&quot; button</li>
 </ul>
 <p><strong>Preconditions</strong></p>
 <ul>
@@ -124,7 +465,7 @@ To mitigate risks related to LLM output variability, we will do the following:</
 </ul>
 <p><strong>List of steps (success scenario)</strong></p>
 <ol>
-<li>System: Presents "Continue with Google" button that uses NextAuth.js</li>
+<li>System: Presents &quot;Continue with Google&quot; button that uses NextAuth.js</li>
 <li>User: Clicks button</li>
 <li>System: Prompts user to sign in with their google account, and asks for information/permissions</li>
 <li>User: Enters information, gives permissions</li>
@@ -133,14 +474,14 @@ To mitigate risks related to LLM output variability, we will do the following:</
 </ol>
 <p><strong>Extensions/variations of the success scenario</strong></p>
 <ul>
-<li>The user wants to login using just their email, not necesarily google. They can "Continue with email", then they will recieve an email with a one-time login url. They will have to repeat this process to sign in for future cases.</li>
-<li>User previously used "continue with google" but this time they use "continue with email" with the same address. They will still be connected to the correct account, with a different OAuth method.</li>
+<li>The user wants to login using just their email, not necesarily google. They can &quot;Continue with email&quot;, then they will recieve an email with a one-time login url. They will have to repeat this process to sign in for future cases.</li>
+<li>User previously used &quot;continue with google&quot; but this time they use &quot;continue with email&quot; with the same address. They will still be connected to the correct account, with a different OAuth method.</li>
 </ul>
 <p><strong>Exceptions: failure conditions and scenarios</strong></p>
 <ul>
 <li>The user provides an invalid email address. In this case we will display an error message for the user telling them to try again with valid input.</li>
 </ul>
-<h3 id="32-create-a-tree"><strong>3.2. Create a Tree</strong> </h3>
+<h3 id="32-create-a-tree"><strong>3.2. Create a Tree</strong></h3>
 <p><strong>Triggers</strong></p>
 <ul>
 <li>User clicks “New Tree” button</li>
@@ -155,8 +496,8 @@ To mitigate risks related to LLM output variability, we will do the following:</
 </ul>
 <p><strong>List of steps (success scenario)</strong></p>
 <ol>
-<li>System: Presents "I want to learn about..." text field</li>
-<li>User:  Enters "matrices" in text field</li>
+<li>System: Presents &quot;I want to learn about...&quot; text field</li>
+<li>User:  Enters &quot;matrices&quot; in text field</li>
 <li>System: A modal appears where text is generated to explain the requested topic</li>
 <li>User: Scrolls to read content. Then clicks peripheral of modal to exit.</li>
 <li>System: Display the generated node in an open space. The node focuses on mouse hover and can be clicked. The node has a button for asking a follow up question. There is a side panel that will list each created tree by the user, as well as a button to create a new tree.</li>
@@ -170,7 +511,7 @@ To mitigate risks related to LLM output variability, we will do the following:</
 <li>LLM Generation Timeout or Failure. In this case we will throw an error message, reset the state, and ask the user to try again.</li>
 <li>Connection Lost During Generation. In this case we will throw an error message, reset the state, and ask the user to try again.</li>
 </ul>
-<h3 id="33-generate-a-follow-up-node"><strong>3.3. Generate a follow-up Node</strong> </h3>
+<h3 id="33-generate-a-follow-up-node"><strong>3.3. Generate a follow-up Node</strong></h3>
 <p><strong>Triggers</strong></p>
 <ul>
 <li>User clicks button on an existing node for follow-up questions</li>
@@ -187,7 +528,7 @@ To mitigate risks related to LLM output variability, we will do the following:</
 <p><strong>List of steps (success scenario)</strong></p>
 <ol>
 <li>System: A list of 3 potential follow-up questions appear next to the node, as well as an empty text box where user can enter their own question.</li>
-<li>User: Clicks the first option (E.g. "What is a determinant"?)</li>
+<li>User: Clicks the first option (E.g. &quot;What is a determinant&quot;?)</li>
 <li>System: A new node branches off the current node, and a modal appears displaying the question, generated text from LLM, and additional potential follow-up questions.</li>
 </ol>
 <p><strong>Extensions/variations of the success scenario</strong></p>
@@ -200,7 +541,7 @@ To mitigate risks related to LLM output variability, we will do the following:</
 <li>LLM Generation Timeout or Failure. In this case we will throw an error message, reset the state, and ask the user to try again.</li>
 <li>Connection Lost During Generation. In this case we will throw an error message, reset the state, and ask the user to try again.</li>
 </ul>
-<h3 id="34--view-an-existing-tree"><strong>3.4.  View an existing Tree</strong> </h3>
+<h3 id="34-view-an-existing-tree"><strong>3.4.  View an existing Tree</strong></h3>
 <p><strong>Trigger</strong></p>
 <ul>
 <li>User clicks on a tree that was previously made</li>
@@ -233,7 +574,7 @@ To mitigate risks related to LLM output variability, we will do the following:</
 <li>The tree was improperly saved or the data was corrupted</li>
 <li>“Review Mode” inaccurately summarizes the content of a node -&gt; display “Manual review recommended” near nodes with a lot of content</li>
 </ul>
-<h3 id="35-view-an-existing-node"><strong>3.5. View an existing node</strong> </h3>
+<h3 id="35-view-an-existing-node"><strong>3.5. View an existing node</strong></h3>
 <p><strong>Triggers</strong></p>
 <ul>
 <li>User clicks a Node on the Tree view</li>
@@ -273,7 +614,7 @@ To mitigate risks related to LLM output variability, we will do the following:</
 <li>Database or network error → Show error message and a Retry option</li>
 <li>Corrupted or incomplete content → Show “Content could not be loaded” with a prompt to regenerate or contact support</li>
 </ul>
-<h3 id="36-generate-flashcards-from-a-node"><strong>3.6. Generate Flashcards from a Node</strong> </h3>
+<h3 id="36-generate-flashcards-from-a-node"><strong>3.6. Generate Flashcards from a Node</strong></h3>
 <p><strong>Trigger</strong></p>
 <ul>
 <li>Learner clicks “Generate Flashcards” on a node or while viewing Node</li>
@@ -311,7 +652,7 @@ To mitigate risks related to LLM output variability, we will do the following:</
 <li>Time/clock issues → The server sets the right time so reviews aren’t duplicated or skipped.</li>
 <li>Can’t save → Your draft list stays on your device, and you’ll see a Try again message.</li>
 </ul>
-<h3 id="37-generate-flashcards-from-a-tree"><strong>3.7. Generate Flashcards from a Tree</strong> </h3>
+<h3 id="37-generate-flashcards-from-a-tree"><strong>3.7. Generate Flashcards from a Tree</strong></h3>
 <p><strong>Trigger</strong></p>
 <ul>
 <li>Learner clicks “Generate Flashcards” while viewing Tree</li>
@@ -349,7 +690,7 @@ To mitigate risks related to LLM output variability, we will do the following:</
 <li>Time/clock issues → The server sets the right time so reviews aren’t duplicated or skipped.</li>
 <li>Can’t save → Your draft list stays on your device, and you’ll see a Try again message.</li>
 </ul>
-<h3 id="38--use-spaced-repetition-feed"><strong>3.8.  Use Spaced Repetition Feed</strong> </h3>
+<h3 id="38-use-spaced-repetition-feed"><strong>3.8.  Use Spaced Repetition Feed</strong></h3>
 <p><strong>Triggers</strong></p>
 <p>The user goes back, looking at all the trees</p>
 <p>Reminders given by the website about going back to previous topics</p>
@@ -379,41 +720,41 @@ To mitigate risks related to LLM output variability, we will do the following:</
 <p><strong>Exceptions: failure conditions and scenarios</strong></p>
 <p>Website fails to load tree data</p>
 <p>Flashcards show the wrong information</p>
-<h2 id="4-non-functional-requirements"><strong>4. Non-functional Requirements:</strong> </h2>
+<h2 id="4-non-functional-requirements"><strong>4. Non-functional Requirements:</strong></h2>
 <ul>
 <li><strong>User information is secure:</strong> Any information that the users give us must be kept safe. Passwords and email addresses could be anything from ‘throwaway’ values that the user keeps separate from their important details, or they could match the values used to access their bank account, which means that we have to ensure that nobody can access their data. Even if no personal data is stored during the use of GPTree, we always have to be careful with whatever the user gives us.</li>
 <li><strong>Scalable for more users with growth:</strong> For whatever systems we design, we need to ensure that they could be modified to handle a higher amount of traffic as more users interact with GPTree. Regardless of how many users we have, we still need to be able to maintain their personal trees, flashcards, quizzes, etc., so it’s important that we avoid designing around the idea of just serving a few users.</li>
 <li><strong>As LLM models advance, making sure that model choice is modular and easy to change / update:</strong> As improvements are made in the technology available to us, it’s important that we design with the future in mind so that GPTree can improve the quality of its generated content and its ability to help users learn.</li>
 </ul>
-<h2 id="5-external-requirements"><strong>5. External Requirements:</strong> </h2>
+<h2 id="5-external-requirements"><strong>5. External Requirements:</strong></h2>
 <ul>
 <li>To handle invalid user input, irrelevant or inappropriate inputs from the user will be flagged by an LLM and will prompt users to try again..</li>
 <li>We will be hosting this webapp on Vercel, which provides free public URL hosting.</li>
 <li>To ensure that someone else can set up a new server, we will document the build process on the git repository readme. We plan to include a single script that will build the entire project.</li>
 <li>Based on the amount of work required to complete the project, we feel that 5 people will be able to develop this over the course of the quarter. If it turns out that the project takes too much work, then we can scale down the complexity of the features to be more realistic. If it turns out that we have ample time, we plan on developing a mobile IOS app to complement the web page.</li>
 </ul>
-<h2 id="6-team-process-description"><strong>6. Team process description:</strong> </h2>
-<h3 id="technical-details">Technical Details </h3>
-<p><strong>Frontend:</strong><br>
+<h2 id="6-team-process-description"><strong>6. Team process description:</strong></h2>
+<h3 id="technical-details">Technical Details</h3>
+<p><strong>Frontend:</strong>
 The website will be built using Next.js and the React library for a responsive and modular UI. Development will use TypeScript and SCSS for consistent styling and type safety. The app will be hosted on Vercel, allowing quick iteration and automatic deployment from GitHub.</p>
-<p><strong>Backend:</strong><br>
+<p><strong>Backend:</strong>
 The server side will be developed using Node.js and Next.js API routes. REST endpoints will support creation and retrieval of Trees, Nodes, Flashcards, and Quizzes.</p>
-<p><strong>LLM Integration:</strong><br>
+<p><strong>LLM Integration:</strong>
 GPTree will use the Groq API during development for low-cost access to open-weight models such as gpt-oss-120b. Custom prompt engineering will ensure structured and educational responses. The system will remain modular to allow switching to other LLM providers as needed.</p>
-<p><strong>Data Storage:</strong><br>
+<p><strong>Data Storage:</strong>
 Our database will be hosted as a PostgreSQL database on Prisma. Prisma ORM will manage schemas, relationships, and migrations, ensuring type-safe access and scalable performance.</p>
-<p><strong>Development Environment:</strong><br>
+<p><strong>Development Environment:</strong>
 Development will take place in Visual Studio Code, using GitHub for version control and NPM for package management.</p>
-<h3 id="team-structure">Team Structure </h3>
+<h3 id="team-structure">Team Structure</h3>
 <p><strong>Brittan: Frontend/Backend</strong>. This team member has experience in the full stack development using <a href="http://Next.js">Next.js</a> and PostgreSQL. Since GPTree was their idea, they will be helping out on developing and connecting the front and backend, and ensuring general cohesion over the whole project.</p>
 <p><strong>Jungho: Backend</strong>, we need this role to work with AI models and make sure data can be stored nicely into nodes, maintaining correct history per node (a node should contain the context of previous nodes). Is a good fit for the role having worked with OpenAI APIs and is interested in doing more.</p>
 <p><strong>Richman: Frontend and UI/UX</strong>, this is needed for the app to feel approachable and consistent across the different components such as flashcards, quizzes, the trees, etc. Interested in doing frontend and UI, done design in the past for other projects in different classes.</p>
 <p><strong>Yana: Frontend and UI/UX</strong>. This is important in order to create an attractive website for users and easy to navigate. It is also important for the website to feel satisfying to use and for people to continue to come back to the website.</p>
 <p><strong>Jackson: Backend</strong>. This role is necessary to work with user data and the database of trees/related content, as well as the LLM’s that will generate the content that users see. He is a good fit for the role primarily because he is highly interested in learning about developing a backend.</p>
-<h3 id="project-schedule">Project Schedule </h3>
 <table>
 <thead>
 <tr>
+<th><strong>Week</strong></th>
 <th><strong>Milestone</strong></th>
 <th><strong>Task</strong></th>
 <th><strong>Dependencies</strong></th>
@@ -424,6 +765,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </thead>
 <tbody>
 <tr>
+<td><strong>Week 3</strong></td>
 <td><strong>Requirements &amp; Setup</strong></td>
 <td>Define functional and non-functional requirements</td>
 <td>None</td>
@@ -433,6 +775,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Define team policies and set up tools (Discord, GitHub)</td>
 <td>None</td>
 <td>All</td>
@@ -440,6 +783,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Policies in repo; channels and repo active</td>
 </tr>
 <tr>
+<td></td>
 <td></td>
 <td>Establish environments and hosting (Vercel, PostgreSQL)</td>
 <td>Policies &amp; tools set up</td>
@@ -449,6 +793,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Plan key pages and user journeys (Landing, Tree, Node, Flashcard, SR)</td>
 <td>Requirements defined</td>
 <td>UI/UX</td>
@@ -457,6 +802,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Create low-fidelity wireframes for core pages</td>
 <td>Page plan complete</td>
 <td>UI/UX</td>
@@ -464,6 +810,16 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Wireframes for Landing/Tree/Node/Flashcard/SR</td>
 </tr>
 <tr>
+<td></td>
+<td></td>
+<td><strong>Timeline Detail:</strong> GPTree functional and non-functional requirements are solidified. Team processes are documented. <em>UI/UX:</em> Planning what features are needed and what each part of the website should do and look like. <em>Frontend:</em> Set up structure and basic pages, simple navigation. <em>Backend:</em> Get webserver and database online.</td>
+<td>—</td>
+<td>—</td>
+<td style="text-align:right">—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Week 4</strong></td>
 <td><strong>Architecture Definition</strong></td>
 <td>Define overall system architecture (frontend–API–LLM–DB)</td>
 <td>Requirements defined</td>
@@ -473,6 +829,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Define Prisma schema (User, Tree, Node, Flashcard)</td>
 <td>System architecture defined</td>
 <td>Backend</td>
@@ -480,6 +837,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Schema migrated; seed runs</td>
 </tr>
 <tr>
+<td></td>
 <td></td>
 <td>Define REST API architecture (REST + LLM endpoints)</td>
 <td>Prisma schema defined</td>
@@ -489,6 +847,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Component hierarchy diagram and folder layout</td>
 <td>Wireframes complete</td>
 <td>Frontend</td>
@@ -496,6 +855,16 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Component map in repo</td>
 </tr>
 <tr>
+<td></td>
+<td></td>
+<td><strong>Timeline Detail:</strong> System architecture is defined, including data flow, LLM integration, database schema, and API structure. Key UI/UX elements such as Trees, Nodes, Edges, and Flash Cards have prototype designs. <em>UI/UX:</em> Begin whiteboard process for landing page, tree page, SR learning page, create rough designs/wireframe. <em>Frontend:</em> Define component hierarchy and page layouts. <em>Backend:</em> Define Prisma Schema for key entities.</td>
+<td>—</td>
+<td>—</td>
+<td style="text-align:right">—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Week 5</strong></td>
 <td><strong>Design Implementation</strong></td>
 <td>Implement authentication (Google + email with NextAuth)</td>
 <td>Prisma schema defined; API surface defined</td>
@@ -505,6 +874,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Build generic UI kit + SCSS structure (buttons, modals, inputs)</td>
 <td>Component hierarchy diagram</td>
 <td>Frontend</td>
@@ -512,6 +882,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Reusable components published</td>
 </tr>
 <tr>
+<td></td>
 <td></td>
 <td>Design high-fidelity UI for Landing/Tree/Node</td>
 <td>Wireframes complete</td>
@@ -521,6 +892,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Static pages scaffold (Landing, Tree, Node)</td>
 <td>UI kit ready; hi-fi design ready</td>
 <td>Frontend</td>
@@ -529,6 +901,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Implement REST endpoints (Trees, Nodes, Flashcards)</td>
 <td>API surface defined; DB live</td>
 <td>Backend</td>
@@ -536,6 +909,16 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>REST endpoints pass tests</td>
 </tr>
 <tr>
+<td></td>
+<td></td>
+<td><strong>Timeline Detail:</strong> Detailed definition of all software components has been completed, including packages, classes, and units of abstraction. Users can now sign in. <em>UI/UX:</em> Design for key components have been completed and are able to be implemented as React components styled with .scss. <em>Frontend:</em> Skeleton model of the tree and nodes designed, user sign on page and landing page functional. <em>Backend:</em> All REST endpoints defined for basic entities, routes for User sign on created using nextJS OAuth.</td>
+<td>—</td>
+<td>—</td>
+<td style="text-align:right">—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Week 6</strong></td>
 <td><strong>Integration &amp; Use Cases</strong></td>
 <td>Connect frontend to REST endpoints</td>
 <td>REST endpoints implemented; static pages scaffolded</td>
@@ -545,6 +928,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Integrate Groq for node generation (server)</td>
 <td>API surface defined; DB live</td>
 <td>Backend</td>
@@ -552,6 +936,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Structured JSON output with context</td>
 </tr>
 <tr>
+<td></td>
 <td></td>
 <td>UC 3.1: User sign in / sign up (UI + flow)</td>
 <td>Authentication implemented; hi-fi design ready</td>
@@ -561,6 +946,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>UC 3.2: Create a Tree (UI + API + LLM)</td>
 <td>Groq integrated; frontend–REST connected; designed Tree/Node UI</td>
 <td>Frontend + Backend + UI/UX</td>
@@ -568,6 +954,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Root node generated and persisted</td>
 </tr>
 <tr>
+<td></td>
 <td></td>
 <td>UC 3.3: Generate Follow-up Node</td>
 <td>UC 3.2 complete; Groq integrated; designed Node UI</td>
@@ -577,6 +964,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>UC 3.4: View an existing Tree</td>
 <td>Frontend–REST connected; designed Tree UI</td>
 <td>Frontend + UI/UX</td>
@@ -584,6 +972,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Tree fetched and rendered; nav ok</td>
 </tr>
 <tr>
+<td></td>
 <td></td>
 <td>UC 3.5: View an existing Node</td>
 <td>UC 3.4 complete; designed Node UI</td>
@@ -593,6 +982,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Global loading/error states + optimistic UX</td>
 <td>Frontend–REST connected</td>
 <td>Frontend</td>
@@ -601,6 +991,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Initial hallway usability test pass</td>
 <td>UC 3.1–3.5 complete</td>
 <td>UI/UX</td>
@@ -608,6 +999,16 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Findings logged; priorities set</td>
 </tr>
 <tr>
+<td></td>
+<td></td>
+<td><strong>Timeline Detail:</strong> Users can now create Trees and generate Nodes. User testing begins. <em>UI/UX:</em> Design patterns created, UX tests documented. <em>Frontend:</em> Tree and Nodes now support LLM generation using backend. <em>Backend:</em> Routes written connecting to Groq for tree and follow-up node creation maintaining context.</td>
+<td>—</td>
+<td>—</td>
+<td style="text-align:right">—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Week 7</strong></td>
 <td><strong>Flashcards &amp; Spaced Repetition</strong></td>
 <td>Flashcard generation routes (node, tree)</td>
 <td>REST endpoints implemented; Groq integrated</td>
@@ -617,6 +1018,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>UC 3.6: Generate Flashcards from a Node (UI)</td>
 <td>Flashcard routes ready; designed Flashcard UI</td>
 <td>Frontend + UI/UX</td>
@@ -624,6 +1026,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Cards visible/editable; saved</td>
 </tr>
 <tr>
+<td></td>
 <td></td>
 <td>UC 3.7: Generate Flashcards from a Tree (UI)</td>
 <td>Node flashcards UI complete; flashcard routes ready</td>
@@ -633,6 +1036,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Design SR page high-fidelity spec</td>
 <td>Wireframes complete</td>
 <td>UI/UX</td>
@@ -640,6 +1044,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Approved SR design</td>
 </tr>
 <tr>
+<td></td>
 <td></td>
 <td>Spaced Repetition scheduling logic (EF/intervals)</td>
 <td>Flashcards persisted</td>
@@ -649,6 +1054,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>UC 3.8: Spaced Repetition Feed (UI + API)</td>
 <td>SR logic ready; SR design ready</td>
 <td>Frontend + UI/UX + Backend</td>
@@ -656,6 +1062,16 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Due queue renders and advances</td>
 </tr>
 <tr>
+<td></td>
+<td></td>
+<td><strong>Timeline Detail:</strong> Support for Flash Cards is added, and Spaced Repetition Page in progress. <em>UI/UX:</em> Flashcard and SR design finalized, UX Testing begins. <em>Frontend:</em> Flashcard generation and viewing functional. <em>Backend:</em> Routes for Flashcards added for nodes and trees, DB supports SR.</td>
+<td>—</td>
+<td>—</td>
+<td style="text-align:right">—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Week 8</strong></td>
 <td><strong>Beta Completion</strong></td>
 <td>App-wide polish: loading/errors/progress indicators</td>
 <td>UC 3.6–3.8 complete</td>
@@ -665,6 +1081,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Whole-app UX validation and revisions</td>
 <td>App-wide polish in place</td>
 <td>UI/UX</td>
@@ -673,6 +1090,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Deploy Beta to Vercel preview</td>
 <td>All core use cases complete</td>
 <td>Backend</td>
@@ -680,6 +1098,16 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Public preview URL shared</td>
 </tr>
 <tr>
+<td></td>
+<td></td>
+<td><strong>Timeline Detail:</strong> Spaced Repetition Page functional; all functional requirements in beta. <em>UI/UX:</em> Validate design with UX testing, revise confusing areas, test app as a whole. <em>Frontend:</em> Display node content with loading/error states. <em>Backend:</em> Generate follow up nodes to predict future questions.</td>
+<td>—</td>
+<td>—</td>
+<td style="text-align:right">—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Week 9</strong></td>
 <td><strong>Peer Review &amp; Optimization</strong></td>
 <td>Peer review and triage</td>
 <td>Beta deployed</td>
@@ -689,6 +1117,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Frontend performance + accessibility pass</td>
 <td>Peer review complete</td>
 <td>Frontend</td>
@@ -697,6 +1126,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Backend load/error/security tests</td>
 <td>Peer review complete</td>
 <td>Backend</td>
@@ -704,6 +1134,16 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>No REST/LLM errors under normal load</td>
 </tr>
 <tr>
+<td></td>
+<td></td>
+<td><strong>Timeline Detail:</strong> All functional requirements peer-reviewed; feedback documented and addressed. <em>UI/UX:</em> Thorough UX testing. <em>Frontend:</em> Final polish and bug fixes. <em>Backend:</em> No unexpected REST errors.</td>
+<td>—</td>
+<td>—</td>
+<td style="text-align:right">—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Week 10</strong></td>
 <td><strong>Final Release &amp; Documentation</strong></td>
 <td>Full end-to-end QA of use cases</td>
 <td>Peer fixes complete</td>
@@ -713,6 +1153,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Production deployment to Vercel</td>
 <td>QA complete</td>
 <td>Backend</td>
@@ -721,6 +1162,7 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 </tr>
 <tr>
 <td></td>
+<td></td>
 <td>Final docs and presentation</td>
 <td>Production live</td>
 <td>All</td>
@@ -728,6 +1170,16 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td>Report and slides in repo</td>
 </tr>
 <tr>
+<td></td>
+<td></td>
+<td><strong>Timeline Detail:</strong> All functional requirements implemented and tested. Production version released with public URL. <em>UI/UX:</em> UX thoroughly tested by developers and users. <em>Frontend:</em> Final polish and QoL improvements. <em>Backend:</em> Production release on Vercel.</td>
+<td>—</td>
+<td>—</td>
+<td style="text-align:right">—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Week 11</strong></td>
 <td><strong>Retrospective</strong></td>
 <td>Individual + team retrospectives</td>
 <td>Final release complete</td>
@@ -735,184 +1187,32 @@ Development will take place in Visual Studio Code, using GitHub for version cont
 <td style="text-align:right">0.5</td>
 <td>Retros posted; action items captured</td>
 </tr>
+<tr>
+<td></td>
+<td></td>
+<td><strong>Timeline Detail:</strong> Product released and ready for presentation. Individual retrospective complete.</td>
+<td>—</td>
+<td>—</td>
+<td style="text-align:right">—</td>
+<td>—</td>
+</tr>
 </tbody>
 </table>
-<h3 id="timeline">Timeline </h3>
-<h5 id="end-of-week-3---requirements--team-policies">End Of Week 3 - Requirements &amp; Team Policies </h5>
-<p>GPTree functional and non-functional requirements are solidified. Team processes are documented.</p>
-<ul>
-<li>UI/UX:
-<ul>
-<li>Planning what features are needed and what each part of the website should do and look like</li>
-</ul>
-</li>
-<li>Frontend:
-<ul>
-<li>Set up structure and basic pages, simple navigation</li>
-</ul>
-</li>
-<li>Backend:
-<ul>
-<li>Get webserver and database online</li>
-</ul>
-</li>
-</ul>
-<h5 id="end-of-week-4---architecture">End Of Week 4 - Architecture </h5>
-<p>System architecture is defined, including data flow, LLM integration, database schema, and API structure. Key UI/UX elements such as Trees, Nodes, Edges, and Flash Cards have prototype designs.</p>
-<ul>
-<li>UI/UX:
-<ul>
-<li>Begin whiteboard process for landing page, tree page, SR learning page, create rough designs/wireframe</li>
-</ul>
-</li>
-<li>Frontend:
-<ul>
-<li>Define component hierarchy and page layouts.</li>
-</ul>
-</li>
-<li>Backend:
-<ul>
-<li>Define Prisma Schema for key entities.</li>
-</ul>
-</li>
-</ul>
-<h5 id="end-of-week-5---design">End Of Week 5 - Design </h5>
-<p>Detailed definition of all software components has been completed, including packages, classes, and units of abstraction.  Users can now sign in</p>
-<ul>
-<li>UI/UX:
-<ul>
-<li>Design for key components have been completed and are able to be implemented as React components styled with .scss.</li>
-</ul>
-</li>
-<li>Frontend:
-<ul>
-<li>A skeleton model of the tree and nodes have been designed and now are awaiting backend integration.</li>
-<li>User sign on page and landing page are functional</li>
-</ul>
-</li>
-<li>Backend:
-<ul>
-<li>All REST endpoints have been defined for basic entities. This means that the frontend can create DB requests for Trees, Nodes, Users, Flash Cards, etc.</li>
-<li>Routes for User sign on have been created using nextJS OAuth</li>
-</ul>
-</li>
-</ul>
-<h5 id="end-of-week-6---testing-and-continuous-integration">End Of Week 6 - Testing and Continuous Integration </h5>
-<p>Users can now Create Trees and generate Nodes. User testing begins (hallway testing, friends, etc)</p>
-<ul>
-<li>UI/UX:
-<ul>
-<li>Design patterns are created for generic components as needed and exist on a design doc.</li>
-<li>UX tests are created and documented. Results of testing are documented as well.</li>
-</ul>
-</li>
-<li>Frontend:
-<ul>
-<li>Tree and Nodes now support LLM generation using backend. Users can now create trees, create nodes, view trees, and view nodes.</li>
-</ul>
-</li>
-<li>Backend:
-<ul>
-<li>Routes have been written connecting to Groq, allowing Frontend to make requests to LLMs. Requests both for a new tree and a follow-up node are defined and are able to maintain the context of the conversation.</li>
-</ul>
-</li>
-</ul>
-<h5 id="end-of-week-7---implementation-and-documentation">End Of Week 7 - Implementation and Documentation </h5>
-<p>Support for Flash Cards is added, and the Spaced Repetition Page is in progress, using a similar framework as the Flash Cards.</p>
-<ul>
-<li>UI/UX:
-<ul>
-<li>Design pattern for Flash Cards has been finalized. In addition the design pattern for the spaced repetition page is finalized.</li>
-<li>UX Testing of Flash Cards is written and begins.</li>
-</ul>
-</li>
-<li>Frontend:
-<ul>
-<li>Functionality for Flash Card feature is added. This includes the buttons to generate flash cards and the page to view it.</li>
-</ul>
-</li>
-<li>Backend:
-<ul>
-<li>Additional Routes are added for the creation of Flash Cards for both single nodes and trees. Database has been modified to support spaced repetition page and most server request routes are completed.</li>
-</ul>
-</li>
-</ul>
-<h4 id="end-of-week-8---beta-release">End of Week 8 - Beta Release </h4>
-<p>Spaced Repetition Page is functional. Thus all functional requirements are at least in beta phase</p>
-<ul>
-<li>UI/UX:
-<ul>
-<li>Validate design with UX testing, revise, and fix confusing areas</li>
-<li>Testing begins for app as a whole</li>
-</ul>
-</li>
-<li>Frontend:
-<ul>
-<li>Display node content with loading/error states, tighten up the basic interactions</li>
-</ul>
-</li>
-<li>Backend:
-<ul>
-<li>Generate follow up nodes to predict future questions</li>
-</ul>
-</li>
-</ul>
-<h5 id="end-of-week-9---peer-review">End Of Week 9 - Peer Review </h5>
-<p>All functional requirements have gone through peer review, feedback is documented and is being addressed</p>
-<ul>
-<li>UI/UX:
-<ul>
-<li>UX is throughly tested by all developers and by random users (hallway test)</li>
-</ul>
-</li>
-<li>Frontend:
-<ul>
-<li>Final exhaustive testing of frontend / polish. Efforts are made to optimize ease of use. Bugs are fixed and quality of life features are implemented.</li>
-</ul>
-</li>
-<li>Backend:
-<ul>
-<li>Final exhaustive testing of backend. There are no unexpected REST errors.</li>
-</ul>
-</li>
-</ul>
-<h5 id="end-of-week-10---final-release">End Of Week 10 - Final Release </h5>
-<p>All Functional Requirements are implemented and tested. A production version is released with a public url.</p>
-<ul>
-<li>UI/UX:
-<ul>
-<li>UX is throughly tested by all developers and by random users.</li>
-</ul>
-</li>
-<li>Frontend:
-<ul>
-<li>Final exhaustive testing of frontend / polish. Efforts are made to optimize ease of use.</li>
-</ul>
-</li>
-<li>Backend:
-<ul>
-<li>Final exhaustive testing of backend. There are no unexpected REST errors.</li>
-<li>App is moved to production on Vercel.</li>
-</ul>
-</li>
-</ul>
-<h5 id="end-of-week-11---individual-retrospective">End Of Week 11 - Individual retrospective </h5>
-<p>Product is released and is ready for presentation. Individual retrospective complete.</p>
-<h3 id="risk-assessment">Risk assessment </h3>
+<h3 id="risk-assessment">Risk assessment</h3>
 <ul>
 <li>Groq may fail as a LLM provider and we are unable to find affordable and functional alternatives
 <ul>
 <li>Low liklihood of occuring</li>
 <li>High impact if it occurs</li>
-<li>The liklihood of it occuring is low because Groq is known for being reliable due to its<br>
-performance-focused approach The impact is high because if the Groq fails as an LLM provider,<br>
-it could lead to loss of functionality in the website. We as the team would need to refactor<br>
+<li>The liklihood of it occuring is low because Groq is known for being reliable due to its
+performance-focused approach The impact is high because if the Groq fails as an LLM provider,
+it could lead to loss of functionality in the website. We as the team would need to refactor
 large portions of code and lead to not finishing the project on time.</li>
 <li>Steps you are taking to reduce the likelihood or impact, and steps to permit better estimates;</li>
 <li>To reduce the likihood or impact, the team will arefully read API docs to not use any depricated features</li>
 <li>To detect if Groq has failed on us, we will look for any thrown API error responses</li>
-<li>Should this occur, we would look into what error is being thrown, find where the issue is and debug. We will<br>
-design our product to be highly modular with regard to both the LLM API provider and  the LLM model itself.<br>
+<li>Should this occur, we would look into what error is being thrown, find where the issue is and debug. We will
+design our product to be highly modular with regard to both the LLM API provider and  the LLM model itself.
 This will allow us to be able to easily switch both models and providers if ever deemed necessary.</li>
 </ul>
 </li>
@@ -920,14 +1220,14 @@ This will allow us to be able to easily switch both models and providers if ever
 <ul>
 <li>Medium liklihood of occuring</li>
 <li>Meduim impact if it occurs</li>
-<li>It can be hard to estimate how long a task will take us, especially since we are students and are still learning the pacing<br>
-of larger projects. It is not rare for a team to find they don't have as much time as they hoped, so although it could be hard,<br>
+<li>It can be hard to estimate how long a task will take us, especially since we are students and are still learning the pacing
+of larger projects. It is not rare for a team to find they don't have as much time as they hoped, so although it could be hard,
 there are many different tatics we can use to overcome this.</li>
-<li>Steps we are taking in order to avoid this from happening are, looking over the schedule, asking the team where they are at and<br>
+<li>Steps we are taking in order to avoid this from happening are, looking over the schedule, asking the team where they are at and
 what they are currently working on so everyone is able to be on track.</li>
 <li>To detect the problem, we look back at our planned out schedule, making sure we are all on track</li>
-<li>To mitigate this, there will be a constant monitoring of progress to ensure that either the team stays on schedule,<br>
-or the correct steps are made to either adjust the schedule, expectations for the project, or to increase the productivity of<br>
+<li>To mitigate this, there will be a constant monitoring of progress to ensure that either the team stays on schedule,
+or the correct steps are made to either adjust the schedule, expectations for the project, or to increase the productivity of
 the team. Additionally, roles in the team will shift in order to help whichever side of the project needs more help.</li>
 </ul>
 </li>
@@ -935,13 +1235,13 @@ the team. Additionally, roles in the team will shift in order to help whichever 
 <ul>
 <li>Low liklihood</li>
 <li>Low impact to occur</li>
-<li>Since we are planning to start out really simple and work our way up to a more complex trees/nodes, we plan to solidify before<br>
-adding a layer of complexities, so the liklihood should be low. If it was to happen, we would backtrack to our latest design that<br>
+<li>Since we are planning to start out really simple and work our way up to a more complex trees/nodes, we plan to solidify before
+adding a layer of complexities, so the liklihood should be low. If it was to happen, we would backtrack to our latest design that
 worked</li>
-<li>As previously said, in order to avoid complications with complex tree and node features, we plan to begin with simple implementations,<br>
-adding layers of complexity once the prevoius layer is solid. We check that a "layer of complexity" is solid with testing.</li>
+<li>As previously said, in order to avoid complications with complex tree and node features, we plan to begin with simple implementations,
+adding layers of complexity once the prevoius layer is solid. We check that a &quot;layer of complexity&quot; is solid with testing.</li>
 <li>To detect this problem we will interact with the website ourselves and use tests to find any issues</li>
-<li>To mitigate this, we will have the frontend working on a UI/UX skeleton of the nodes for the trees that later can be<br>
+<li>To mitigate this, we will have the frontend working on a UI/UX skeleton of the nodes for the trees that later can be
 populated with LLM generated information. We will ensure that the frontend and backend on on the same page regarding the data structure of the trees and nodes, so that the frontend is ready for the API response of the backend.</li>
 </ul>
 </li>
@@ -949,13 +1249,13 @@ populated with LLM generated information. We will ensure that the frontend and b
 <ul>
 <li>Low liklihood</li>
 <li>Meduim impact</li>
-<li>At the very beginning of our project planning we chose what our strech goals are, and as long as people stick to the plan, the liklihood<br>
-it happening are very low. If we do begin to focus to much on the strech goals, we may lose time that should have been used for the<br>
+<li>At the very beginning of our project planning we chose what our strech goals are, and as long as people stick to the plan, the liklihood
+it happening are very low. If we do begin to focus to much on the strech goals, we may lose time that should have been used for the
 must haves of the project, setting us back.</li>
 <li>The steps to avoid this problem are, we plan to communicate what we are working on, double checking that it aligns with the schedule.</li>
-<li>We would detect this issue by looking at how much we have completed for the project, and deciding as a team which stretch goals would<br>
+<li>We would detect this issue by looking at how much we have completed for the project, and deciding as a team which stretch goals would
 serve us best for whatever time we may have left before the deadline</li>
-<li>To mitigate this, we plan to continue to remind each other of what are the needs and wants of the project and what should be completed<br>
+<li>To mitigate this, we plan to continue to remind each other of what are the needs and wants of the project and what should be completed
 for that week</li>
 </ul>
 </li>
@@ -963,18 +1263,18 @@ for that week</li>
 <ul>
 <li>Medium liklihood</li>
 <li>High impact</li>
-<li>The likihood of it happening are meduim because rate limits are common during testing and<br>
-scaling phases. The impact is high because if it is triggered, the functionality of the<br>
+<li>The likihood of it happening are meduim because rate limits are common during testing and
+scaling phases. The impact is high because if it is triggered, the functionality of the
 website relying on the LLM could slow or completely stop.</li>
-<li>To reduce the likilihood or impact, we could add caching for repeated queries to lessen API<br>
+<li>To reduce the likilihood or impact, we could add caching for repeated queries to lessen API
 calls</li>
-<li>To detect the problem we would monitor the API status code error indicating too many requests<br>
+<li>To detect the problem we would monitor the API status code error indicating too many requests
 in a short period.</li>
 </ul>
 </li>
 </ul>
-<h3 id="test-plan--bugs">Test plan &amp; bugs </h3>
-<h4 id="unit-tests">Unit Tests </h4>
+<h3 id="test-plan--bugs">Test plan &amp; bugs</h3>
+<h4 id="unit-tests">Unit Tests</h4>
 <p>Unit tests will verify that the smallest functional parts of the system behave as expected. Since our backend follows a REST architecture, we will write Jest tests for each REST endpoint covering typical, boundary, and failure cases. This includes:</p>
 <ul>
 <li>User routes: authentication, sessions, and access control.</li>
@@ -983,10 +1283,14 @@ in a short period.</li>
 <li>Flashcard routes: generation of flashcards, retrieval of nodes, and spaced-repetition scheduling logic.</li>
 </ul>
 <p>Mock data will be used for database calls (via Prisma mock client) and for LLM responses, so that tests remain fast and deterministic. Each test will check both the returned JSON structure and the database side effects, ensuring schema alignment. We consider our unit test suite sufficient when it covers all REST endpoints and their common error cases.</p>
-<h4 id="usability-testing">Usability Testing </h4>
-<p>Usability testing will take place once the main user flows are implemented. Our approach will be “hallway testing”: informal but structured sessions where participants use GPTree with minimal explanation while we observe where confusion or friction occurs.<br>
+<p>Adding a test is done by creating a file ending in '.test.ts' in the test folder. Tests must be written so that they follow Jest documentation, and more information about how to implement tests can be found in the developer documentation at the bottom of this document.</p>
+<p>We found Jest to be a suitable test framework due to its typescript oriented design and high compatability with Next.js. Mocha could have been a good alternative, but lacked sufficient support for the type of modules this project uses. Due to team members' prior experience with Mocha, and Mocha's similarity to Jest both in style and implementation, it was determined</p>
+<h4 id="test-automation">Test Automation</h4>
+<p>We are using gitHub</p>
+<h4 id="usability-testing">Usability Testing</h4>
+<p>Usability testing will take place once the main user flows are implemented. Our approach will be “hallway testing”: informal but structured sessions where participants use GPTree with minimal explanation while we observe where confusion or friction occurs.
 Each round of usability testing will have specific goals (e.g., “Can users find how to generate a follow-up node?” or “Do users understand how to review flashcards?”). Results will be summarized and prioritized into GitHub Issues, guiding the next design or UX iteration.</p>
-<h4 id="bug-tracking">Bug Tracking </h4>
+<h4 id="bug-tracking">Bug Tracking</h4>
 <p>All bugs and feature regressions will be tracked using GitHub Issues. Each issue will include:</p>
 <ul>
 <li>
@@ -1003,7 +1307,7 @@ Each round of usability testing will have specific goals (e.g., “Can users fin
 </li>
 </ul>
 <p>Issues discovered through testing will be linked to specific commits or pull requests for traceability. Resolved issues will be verified in the next test cycle before closing.</p>
-<h3 id="documentation-plan">Documentation plan </h3>
+<h3 id="documentation-plan">Documentation plan</h3>
 <ul>
 <li>We will document every software component and API endpoints in our Software Design section of this document
 <ul>
@@ -1013,19 +1317,20 @@ Each round of usability testing will have specific goals (e.g., “Can users fin
 </li>
 <li>For users documentation, we will have a help/FAQ page if they are to get stuck at any point while using the site
 <ul>
-<li>In support of this, we plan to implement either a "learn more" hyperlink or question mark button that will link the user to relevant guide pages if they need further explanation of using tools. Although we also plan on ensuring that GPTree is as intuitive as possible for users.</li>
+<li>In support of this, we plan to implement either a &quot;learn more&quot; hyperlink or question mark button that will link the user to relevant guide pages if they need further explanation of using tools. Although we also plan on ensuring that GPTree is as intuitive as possible for users.</li>
 </ul>
 </li>
 </ul>
-<h3 id="getting-external-feedback">Getting External feedback </h3>
+<h3 id="getting-external-feedback">Getting External feedback</h3>
 <p>External feedback will be the most useful the moment we have a functional backend/frontend. Once it is possible to generate a tree at all, it will be important to get user feedback for structural elements as well as potential ideas for features. As features are tweaked and added, we will want even more feedback. We will get this feedback by consulting friends, acquaintances, and random people in hallways. Ideally they can try out the feature with minimal context, so that we can assess the usability of the product.</p>
-<h2 id="7-software-architecture"><strong>7. Software Architecture</strong> </h2>
-<h3 id="71-overview-of-system-architecture">7.1 Overview of System Architecture </h3>
+<h2 id="7-software-architecture"><strong>7. Software Architecture</strong></h2>
+<p><img src="./devDiagrams/arch diagram.webp" alt="Architecture Diagram"></p>
+<h3 id="71-overview-of-system-architecture">7.1 Overview of System Architecture</h3>
 <p>The components of our app that power the backend provide two main functionalities: first, we have a database, Prisma, that will allow us to store all of the ‘things’ that a user will be able to access through GPTree, and second, Groq, the LLM that will actually allow us to generate responses to the questions a user asks. For the frontend, we have a React app that will allow the client to see their trees and interact with our program. We are also using <strong>NextAuth.js</strong> to manage user authentication through both <strong>Google sign-in</strong> and <strong>magic link</strong> login methods.</p>
-<p>To provide an interface between our frontend app and the tools in our backend (Prisma, Groq), we have an API layer that will allow the frontend code to ‘talk’ to the backend. We don’t want the client side code to directly interact with our database (which is already impossible with Prisma) or Groq for security reasons, control reasons, authorization reasons, etc. so we have ‘REST endpoints’ that our frontend will call. We can<br>
+<p>To provide an interface between our frontend app and the tools in our backend (Prisma, Groq), we have an API layer that will allow the frontend code to ‘talk’ to the backend. We don’t want the client side code to directly interact with our database (which is already impossible with Prisma) or Groq for security reasons, control reasons, authorization reasons, etc. so we have ‘REST endpoints’ that our frontend will call. We can
 use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will then use server side code to call the appropriate tool’s API. Our frontend will receive JSON responses from these calls, and then parse them appropriately.</p>
 <p>We plan to <strong>deploy GPTree on Vercel</strong>, which provides built-in support for Next.js serverless functions and easy integration with Prisma. This allows for efficient deployment, continuous integration, and scaling with minimal configuration.</p>
-<h3 id="72-detailed-view-of-system-architecture">7.2 Detailed View of System Architecture </h3>
+<h3 id="72-detailed-view-of-system-architecture">7.2 Detailed View of System Architecture</h3>
 <p>First, we will specify the way our fronend and backend communicate. We can call our endpoints with <code>fetch</code>, which allows us to provide information through the url or through the request body. When dealing with a request body, we use the NextRequest object's .json() method to convert the request into JSON, and the ZodObject .parse() method to convert this JSON into the appropriate record, which gives us the ability to catch an error if the request is not properly formatted. In general, we have our own schemas defined for every inetraction our frontend and backend have (for example, the schema that the frontend must satisfy to create a new user, plus the schema of what it will get back), and all of these are handled with Zod. Note that the validation_schemas.ts file contains any and all schemas we send/recieve or otherwise need to parse.</p>
 <p>We will move from the 'farthest' parts of the backend (I.E. Prisma and Groq) to the 'closest' (I.E. the app that the client interacts with).</p>
 <ul>
@@ -1060,11 +1365,11 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 </ul>
 </li>
 </ul>
-<h3 id="73-data-storage-and-schema">7.3 Data Storage and Schema </h3>
+<h3 id="73-data-storage-and-schema">7.3 Data Storage and Schema</h3>
 <p>In general, there are four ‘things’ we need to store: <strong>User information</strong>, <strong>Trees</strong>, <strong>Nodes</strong>, and <strong>Flashcards</strong>. Prisma gives us a convenient abstraction about our relational database, as we can store actual objects and collections of objects inside of it. Prisma handles the conversion of this object abstraction into a form that actually matches the RDB abstraction, so we just have to think about objects. Our top-level schema is represented below in simplified database tables.</p>
 <p>The first four models — User, Account, Session, and VerificationToken — are required by NextAuth.js to manage authentication and user sessions. They securely store user identities, linked login providers, active sessions, and verification tokens, forming the foundation that all GPTree data depends on.</p>
 <hr>
-<h4 id="user"><strong>User</strong> </h4>
+<h4 id="user"><strong>User</strong></h4>
 <table>
 <thead>
 <tr>
@@ -1132,7 +1437,7 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 </tbody>
 </table>
 <hr>
-<h4 id="account"><strong>Account</strong> </h4>
+<h4 id="account"><strong>Account</strong></h4>
 <table>
 <thead>
 <tr>
@@ -1159,13 +1464,13 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 <td>type</td>
 <td>String</td>
 <td>—</td>
-<td>Type of authentication (e.g., "oauth", "email").</td>
+<td>Type of authentication (e.g., &quot;oauth&quot;, &quot;email&quot;).</td>
 </tr>
 <tr>
 <td>provider</td>
 <td>String</td>
 <td>—</td>
-<td>Name of the authentication provider (e.g., "google", "auth0").</td>
+<td>Name of the authentication provider (e.g., &quot;google&quot;, &quot;auth0&quot;).</td>
 </tr>
 <tr>
 <td>providerAccountId</td>
@@ -1195,7 +1500,7 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 <td>token_type</td>
 <td>String?</td>
 <td>—</td>
-<td>Type of access token (e.g., "Bearer").</td>
+<td>Type of access token (e.g., &quot;Bearer&quot;).</td>
 </tr>
 <tr>
 <td>scope</td>
@@ -1224,7 +1529,7 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 </tbody>
 </table>
 <hr>
-<h4 id="session"><strong>Session</strong> </h4>
+<h4 id="session"><strong>Session</strong></h4>
 <table>
 <thead>
 <tr>
@@ -1268,7 +1573,7 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 </tbody>
 </table>
 <hr>
-<h4 id="verificationtoken"><strong>VerificationToken</strong> </h4>
+<h4 id="verificationtoken"><strong>VerificationToken</strong></h4>
 <table>
 <thead>
 <tr>
@@ -1306,7 +1611,7 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 </tbody>
 </table>
 <hr>
-<h4 id="tree"><strong>Tree</strong> </h4>
+<h4 id="tree"><strong>Tree</strong></h4>
 <table>
 <thead>
 <tr>
@@ -1362,7 +1667,7 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 </tbody>
 </table>
 <hr>
-<h4 id="node"><strong>Node</strong> </h4>
+<h4 id="node"><strong>Node</strong></h4>
 <table>
 <thead>
 <tr>
@@ -1442,7 +1747,7 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 </tbody>
 </table>
 <hr>
-<h4 id="flashcard"><strong>Flashcard</strong> </h4>
+<h4 id="flashcard"><strong>Flashcard</strong></h4>
 <table>
 <thead>
 <tr>
@@ -1485,13 +1790,14 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 </tr>
 </tbody>
 </table>
-<h3 id="74-assumptions">7.4 Assumptions </h3>
+<h3 id="74-assumptions">7.4 Assumptions</h3>
 <p>One large assumption we’re making is that the responses we get from Groq will be generally acceptable to the user. There’s a limit to what we can do to prevent or handle hallucinations, especially with more complex topics that we might not account for during development. While this is a risk we would have to mitigate with any LLM, it’s a general assumption that the majority of what the user gets back will be of good quality. If, for whatever reason, the LLM we have spits out incorrect, misleading, or confusing information, it would compromise the quality of GPTree, meaning we need to be especially cautious when working with the LLM component of our system (as in choosing what context we give it, how user questions convert to prompts, etc.).</p>
-<h3 id="75-decisions-and-alternatives">7.5 Decisions and Alternatives </h3>
-<p>One decision we made is to use Next.js as our framework, but we could have chosen something else like Remix. Next.js has a more traditional separation between client side code and server side code, while Remix has files that contain both. A big pro for Next.js is that our team members are familiar with this framework, either from personal projects or work done in another CSE class at UW, which means we can spend less time learning how it works. Remix is entirely different, and its learning curve can be steep, which could end up being costly to our schedule. That said, Next.js isn’t perfect, and after getting over the initial learning curve for Remix, it’s possible that the streamlined methods to make API calls (loader and action methods in Remix) would be easier to write/implement than much of the tedious work to write, handle, and parse fetch methods. We still think that our familiarity with Next.js, as well as its frequent use (and already optimized integration) with other parts of our stack like Prisma and Vercel offers enough of an advantage to choose it over Remix.</p>
+<h3 id="75-decisions-and-alternatives">7.5 Decisions and Alternatives</h3>
+<p>One of the core architectural decisions for GPTree was to adopt a Model–View–Controller (MVC) structure within our web framework. This style organizes the system into three main components: the Model, represented by our Prisma schema and database logic; the View, consisting of React and Next.js pages that render Trees, Nodes, and Flashcards; and the Controller, which corresponds to our API routes that coordinate between user actions and backend logic. An alternative to this decision would be used a simple client-server architecture model. The pros of this alternative is mainly the simplicity of the architecture, and may allow us to change certain details on the fly as needed. But in general the cons of a poorly defined architecture without much detail overrides the pros, and for this reason we use the MVC architecture.</p>
+<p>An additional architectural decision that we made we was to not have any asynchronus pipelines, which was considered to support our spaced repetition learning feature. This would have followed a queue-based model, where flashcard updates and scheduling calculations occur independently of user actions. While that approach could scale well for a large user base and offload work from the client, it would also introduce additional system complexity—requiring persistent job queues, worker processes, and more coordination between services. Instead, we chose instead to favor simplicity and find ways to calculate which items should be in the feed during a single GET request based on time-stamp data and pre-generated flash cards.</p>
 <p>Another decision was to use Prisma instead of another ORM (object relational mapper, I.E. the abstraction between a normal RDB and one with objects) such as Drizzle. Our choice to use Next.js as our framework is crucial in choosing an ORM, as different options have different levels of compatibility with our chosen framework. In this case, Prisma has Next.js guides in its official documentation, and very deep integration with Next.js, meaning that, not only is using Prisma in our project easier, but troubleshooting will also be easier because of the larger amount of tutorials, guides, and support that other developers have created. Drizzle does offer its own advantages though, most notably, its similarity to traditional SQL. Writing a query in Drizzle is slightly more explicit than in Prisma, and as a result, slightly more intuitive. This means that we could spend less time trying to learn new methods and query techniques, and rely on prior knowledge about SQL. Considering the time we’ve ‘saved’ by choosing Next.js, however, it’s reasonable to allocate some extra time to familiarize ourselves with Prisma, as its integration with Next.js will most likely make our lives much easier when working with our database farther down the line.</p>
-<h2 id="8-software-design"><strong>8. Software Design:</strong> </h2>
-<h3 id="81-frontend--react-nextjs">8.1 Frontend — React (Next.js) </h3>
+<h2 id="8-software-design"><strong>8. Software Design:</strong></h2>
+<h3 id="81-frontend--react-nextjs">8.1 Frontend — React (Next.js)</h3>
 <p><strong>Responsibilities:</strong></p>
 <ul>
 <li>Display learning trees, nodes, and flashcards.</li>
@@ -1506,7 +1812,7 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 <li>Deployed on <strong>Vercel</strong> alongside the backend.</li>
 </ul>
 <hr>
-<h3 id="82-authentication--nextauthjs">8.2 Authentication — NextAuth.js </h3>
+<h3 id="82-authentication--nextauthjs">8.2 Authentication — NextAuth.js</h3>
 <p><strong>Responsibilities:</strong></p>
 <ul>
 <li>Authentication and session management.</li>
@@ -1519,7 +1825,7 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 <li>Cookie-based sessions accessible server-side and client-side.</li>
 </ul>
 <hr>
-<h3 id="83-api-layer--rest-endpoints">8.3 API Layer — REST Endpoints </h3>
+<h3 id="83-api-layer--rest-endpoints">8.3 API Layer — REST Endpoints</h3>
 <p><strong>Responsibilities:</strong></p>
 <ul>
 <li>Interface between frontend and backend services.</li>
@@ -1532,7 +1838,7 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 <li>Internally calls <strong>Prisma</strong> (database) and <strong>Groq</strong> (LLM) as needed.</li>
 </ul>
 <hr>
-<h3 id="84-database--prisma-postgresql">8.4 Database — Prisma (PostgreSQL) </h3>
+<h3 id="84-database--prisma-postgresql">8.4 Database — Prisma (PostgreSQL)</h3>
 <p><strong>Responsibilities:</strong></p>
 <ul>
 <li>Persist Users, Trees, Nodes, and Flashcards.</li>
@@ -1546,7 +1852,7 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 <li>All database access is server-side only.</li>
 </ul>
 <hr>
-<h3 id="85-llm-integration--groq-api">8.5 LLM Integration — Groq API </h3>
+<h3 id="85-llm-integration--groq-api">8.5 LLM Integration — Groq API</h3>
 <p><strong>Responsibilities:</strong></p>
 <ul>
 <li>Generate node content and flashcards from user prompts.</li>
@@ -1560,7 +1866,7 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 <li>Timeouts and errors are handled gracefully for a stable UI.</li>
 </ul>
 <hr>
-<h3 id="86-deployment--vercel">8.6 Deployment — Vercel </h3>
+<h3 id="86-deployment--vercel">8.6 Deployment — Vercel</h3>
 <p><strong>Responsibilities:</strong></p>
 <ul>
 <li>Host the frontend and serverless API.</li>
@@ -1573,25 +1879,13 @@ use the standard HTTP/HTTPS ‘fetchʼ to access these endpoints, which will the
 <li><strong>Prisma</strong> connects to the hosted PostgreSQL database at runtime.</li>
 <li>Preview deployments are used for feature branches.</li>
 </ul>
-<h2 id="9-coding-guidelines"><strong>9. Coding Guidelines:</strong> </h2>
-<p>We will follow established, public style guides and enforce them with automated tooling and review.</p>
-<p>TypeScript</p>
-<p>Guide: [<a href="https://ts.dev/style/#visibility">https://ts.dev/style/#visibility</a>]</p>
-<p>We chose this because it is clear and practical. It explains naming, imports, visibility, and API design so our code stays consistent and easy to review.<br>
-Enforcement: ESLint with TypeScript rules and Prettier for auto formatting. Continuous integration runs lint and format checks on every pull request. Precommit hooks run the same checks before a commit. Code reviews use a short style checklist.</p>
-<p>CSS</p>
-<p>Guide: [<a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Code_style_guide/CSS">https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Code_style_guide/CSS</a>]</p>
-<p>We chose this because it follows web standards and stresses readability and accessibility, which keeps styles simple and maintainable.<br>
-Enforcement: Stylelint with the standard config and Prettier for formatting. Continuous integration runs style checks on every pull request. Precommit hooks check changed files. Reviewers confirm selector names, file structure, and comments follow the MDN guidance.</p>
+<h2 id="developer-documentation"><strong>Developer Documentation</strong></h2>
+<p>Clone <code>git@github.com:Britwad/GPTree.git</code> or <code>https://github.com/Britwad/GPTree.git</code> and change into the project directory. Run <code>npm install</code> to fetch dependencies. Copy <code>.env.example</code> to <code>.env</code> and fill the values for Google auth, the database URL, and the Groq key. You can use a local PostgreSQL instance or start one with Docker compose. There are no submodules.</p>
+<p>The <code>app</code> folder holds the Next.js application and the API route handlers under <code>app/api</code>. The <code>components</code> folder contains reusable React components. The <code>lib</code> folder contains helpers such as the Prisma client and auth utilities. The <code>prisma</code> folder contains the Prisma schema, migrations, and the seed script. The <code>test</code> folder contains Jest tests. The <code>types</code> folder holds shared TypeScript types. The <code>public</code> folder serves static assets. Repository documents such as the living document and coding guidelines live at the root along with configuration files like <code>jest.config.js</code>, <code>next.config.ts</code>, and <code>tsconfig.json</code>.</p>
+<p>Ensure a PostgreSQL database is reachable and that <code>DATABASE_URL</code> is set in <code>.env</code>. Generate the Prisma client with <code>npx prisma generate</code> and apply migrations with <code>npx prisma migrate dev</code> for development or <code>npx prisma migrate deploy</code> for production. Build the application with <code>npm run build</code> and start it with <code>npm start</code>. During development you can run <code>npm run dev</code> to launch the local server at <code>http://localhost:3000</code>.</p>
+<p>Run <code>npm test</code> to execute the Jest test suite. No extra setup is required after <code>npm install</code>. Tests run against the application code and use mocks for external services. If you need integration tests with a database, point <code>DATABASE_URL</code> to a dedicated test database. Use <code>npm run test:watch</code> for watch mode and <code>npm run test:cov</code> for coverage when those scripts are present in <code>package.json</code>.</p>
+<p>Add tests in the <code>test</code> folder and name each file after what it covers with a <code>.test.ts</code> suffix, for example <code>user_routes.test.ts</code>. Group related tests with a <code>describe</code> block whose string clearly names the subject, such as <code>testing tree route</code> or <code>tree routes</code>. Each behavior should be checked in a separate <code>it</code> block that reads like a sentence, for example <code>adds a tree to the database</code>. Use <code>beforeAll</code>, <code>afterAll</code>, and <code>beforeEach</code> for setup and cleanup, such as resetting or seeding the database. Assertions use Jest’s <code>expect</code> API to compare actual results with expected results. Keep tests deterministic by mocking external services like the LLM adapter and any network requests. For route tests, Supertest can be used once a lightweight test server helper is added to the repo.</p>
+<p>We are a webapp and the analogous release artifact is a Vercel production deployment of the Next.js build.</p>
 
-      </div>
-      
-      
-    
-    
-    
-    
-    
-    
-  
-    </body></html>
+</body>
+</html>

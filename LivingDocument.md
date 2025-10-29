@@ -551,6 +551,27 @@ Unit tests will verify that the smallest functional parts of the system behave a
 
 Mock data will be used for database calls (via Prisma mock client) and for LLM responses, so that tests remain fast and deterministic. Each test will check both the returned JSON structure and the database side effects, ensuring schema alignment. We consider our unit test suite sufficient when it covers all REST endpoints and their common error cases.
 
+Adding a test is done by creating a file ending in '.test.ts' in the test folder. Tests must be written so that they follow Jest documentation, and more information about how to implement tests can be found in the developer documentation at the bottom of this document.
+
+We found Jest to be a suitable test framework due to its typescript oriented design and high compatability with Next.js. Mocha could have been a good alternative, but lacked sufficient support for the type of modules this project uses. Due to team members' prior experience with Mocha, and Mocha's similarity to Jest both in style and implementation, it was determined that moving forward with Jest would be a more effective and efficient choice than exploring other frameworks.
+
+#### Test Automation and CI
+For the scope of our project, our two chief concerns with automation are running the test suite, and deploying our code, so we are using GitHub actions for testing, and Vercel for deployment. GitHub actions is well suited to address testing given that we are using GitHub to host our codebase, and because GitHub actions is relatively simple to setup for our purposes.
+
+Our project will run the test suite whenever code is pushed to our remote codebase. All we need to do is set up a YAML file that contains the workflow for our testing, which boils down to:
+  - checkout the pushed code
+  - set up node and install dependencies
+  - run test suite
+  - mark the workflow as failed if any tests don't pass
+
+To be specific, there needs to be a '.github/workflows/' directory which contains the YAML file, but after that's in place, we don't need to do anything else to manage it. GitHub will automatically check this directory for us on every push and run each workflow when the appropriate event occurs, which in our case is the push itself. The automatic integration this service has with our project as it is now, plus the fact that we have very little need for a complex CI pipeline means that GitHub actions is a much better alternative to more involved, albeit customizable, services like CircleCI.
+
+As for deployment, Vercel already has native integration with GitHub so that we deploy everytime we push. We want to run tests before we deploy, but GitHub actions and Vercel can easily be configured so that tests run before deployment with additions to our testing YAML file. We can add an additional task that will deploy our code if tests pass, which will ensure we don't deploy broken code.
+
+Similar to our reasoning for choosing GitHub actions, one of the primary drivers behind our choice for Vercel is the low demand for complexity in our CI pipeline. If we needed a system with more 'power' we might opt to use AWS, but our backend is fairly lightweight, and Vercel requires very little effort from us in order to properly deploy our code, making it an excellent option.
+
+To summarize, every time code is pushed to remote, a GitHub workflow will run via GitHub actions, which will run our test suite containing every file in the test directory ending in '.test.ts', and if successful, the workflow will deploy our code via Vercel.
+
 
 #### Usability Testing
 
