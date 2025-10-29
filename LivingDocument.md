@@ -914,3 +914,16 @@ Guide: [https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Code_sty
 
 We chose this because it follows web standards and stresses readability and accessibility, which keeps styles simple and maintainable.
 Enforcement: Stylelint with the standard config and Prettier for formatting. Continuous integration runs style checks on every pull request. Precommit hooks check changed files. Reviewers confirm selector names, file structure, and comments follow the MDN guidance.
+
+## **Developer Documentation**
+Clone 'git@github.com:Britwad/GPTree.git' or 'https://github.com/Britwad/GPTree.git' and change into the project directory. Run 'npm install' to fetch dependencies. Copy '.env.example' to '.env' and fill the values for Google auth, the database URL, and the Groq key. You can use a local PostgreSQL instance or start one with Docker compose. There are no submodules.
+
+The 'app' folder holds the Next.js application and the API route handlers under 'app/api'. The 'components' folder contains reusable React components. The 'lib' folder contains helpers such as the Prisma client and auth utilities. The 'prisma' folder contains the Prisma schema, migrations, and the seed script. The 'test' folder contains Jest tests. The 'types' folder holds shared TypeScript types. The 'public' folder serves static assets. Repository documents such as the living document and coding guidelines live at the root along with configuration files like 'jest.config.js', 'next.config.ts', and 'tsconfig.json'.
+
+Ensure a PostgreSQL database is reachable and that 'DATABASE_URL' is set in '.env'. Generate the Prisma client with 'npx prisma generate' and apply migrations with 'npx prisma migrate dev' for development or 'npx prisma migrate deploy' for production. Build the application with 'npm run build' and start it with npm start. During development you can run 'npm run dev' to launch the local server at 'http://localhost:3000'.
+
+Run 'npm test' to execute the Jest test suite. No extra setup is required after 'npm install'. Tests run against the application code and use mocks for external services. If you need integration tests with a database, point 'DATABASE_URL' to a dedicated test database. Use 'npm run test:watch' for watch mode and 'npm run test:cov' for coverage when those scripts are present in 'package.json'.
+
+Place new files in the 'test' directory. Name the files after the thing they test and end the name with '.test.ts', for example 'user_routes.test.ts'. Use Jest with 'describe' and 'it' blocks. Mock the LLM adapter and network calls so tests are deterministic. For route testing you can use Supertest when a simple test server helper is added to the repo.
+
+Releases are built on Vercel from the 'main' branch. Before releasing, bump the version in 'package.json' and update the changelog. Confirm that all environment variables are set in Vercel for Production and Preview. Push to 'main' to trigger a build and deployment. After the deployment, run 'npx prisma migrate deploy' against the production database. Perform sanity checks by signing in, creating a tree, generating a follow up node, refreshing the page to confirm persistence, and reviewing logs in Vercel. These checks confirm that the release is healthy.
