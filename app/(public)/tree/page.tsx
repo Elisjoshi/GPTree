@@ -5,9 +5,9 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
-import { NodeModal } from "@/components/app/tree/NodeModal";
+import NodeModal from "@/components/app/tree/NodeModal";
 
-// Mock conversation data
+//Mock conversation data
 const mockConversations = [
   {
     id: "c1",
@@ -44,6 +44,7 @@ export default function App() {
   const [prompt, setPrompt] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
   // React Flow + conversation states
   const [nodes, setNodes] = useState(initialNodes);
