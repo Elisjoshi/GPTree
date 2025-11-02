@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     name: Run tests
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout Code
       uses: actions/checkout@v5.0.0
@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies (packages)
       run: npm ci
 
-    - name: Generate Prisma Client (No Engine)
+    - name: Generate Prisma Client (Accelerate)
       run: npx prisma generate --accelerate
       env:
         DATABASE_URL: ${{ secrets.TEST_DB }}
