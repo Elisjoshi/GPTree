@@ -21,7 +21,9 @@ jobs:
       run: npm ci
 
     - name: Run tests
-      run: DATABASE_URL=${{ secrets.TEST_DB }} npm test
+      env:
+        DATABASE_URL: ${{ secrets.TEST_DB }}
+      run: npm test
         
 
     
