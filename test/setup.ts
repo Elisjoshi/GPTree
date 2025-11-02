@@ -4,4 +4,7 @@
 // Manually configure the env file so environment variables
 // get loaded from .env.test
 import dotenv from "dotenv";
-dotenv.config({ path: ".env.test" });
+
+if (process.env.CI !== "true") {  // We don't want this in GitHub Actions
+  dotenv.config({ path: ".env.test" });
+}
