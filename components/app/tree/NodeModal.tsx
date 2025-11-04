@@ -34,31 +34,36 @@ const NodeModal = ({ isOpen=true, node, onClose, onNewNode }: {
   const { data: session } = useSession();
 
   const [prompt, setPrompt] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   if (!node) return null;
 
   const onSubmit = async () => {
-    const body: CreateNode = {
-      question: prompt,
-      userId: session?.user?.id || "",
-      treeId: node.treeId,
-      parentId: node.id,
-    }
+    setIsLoading(true);
+    try {
+      const body: CreateNode = {
+        question: prompt,
+        userId: session?.user?.id || "",
+        treeId: node.treeId,
+        parentId: node.id,
+      }
 
-    const res = await fetch("/api/nodes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
+      const res = await fetch("/api/nodes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
 
-    const data = await res.json();
-    if (!res.ok) {
-      // setError((data && data.error) || "Unknown error");
-      // setLoading(false);
-      return;
+      const data = await res.json();
+      if (!res.ok) {
+        // setError((data && data.error) || "Unknown error");
+        return;
+      }
+      onClose();
+      onNewNode(data);
+    } finally {
+      setIsLoading(false);
     }
-    onClose();
-    onNewNode(data);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -85,15 +90,17 @@ const NodeModal = ({ isOpen=true, node, onClose, onNewNode }: {
         <input
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyPress}
           placeholder="What do you want to learn about?"
-          className="w-96 border border-gray-300 rounded-lg px-4 py-2 focus:ring-1 focus:ring-gray-300 focus:ring-2 focus:ring-green-500"
+          disabled={isLoading}
+          className="w-96 border border-gray-300 rounded-lg px-4 py-2 focus:ring-1 focus:ring-gray-300 focus:ring-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <button
           onClick={onSubmit}
-          className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+          disabled={isLoading}
+          className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Go
+          {isLoading ? 'Creating...' : 'Go'}
         </button>
         <button
           onClick={onClose}
