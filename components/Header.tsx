@@ -6,6 +6,15 @@ import { useSession, signIn, signOut } from "next-auth/react";
 export default function Header() {
   const { data: session, status } = useSession();
 
+  // Don't show header if user is not logged in
+  if (status === "loading") {
+    return null;
+  }
+  
+  if (!session) {
+    return null;
+  }
+
   return (
     <header className="border-b bg-white shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

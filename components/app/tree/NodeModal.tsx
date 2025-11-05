@@ -104,7 +104,7 @@ const NodeModal = ({ isOpen, node, onClose, onNewNode }: {
         </button>
         <button
           onClick={onClose}
-          className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition-colors"
+          className="px-4 py-2 bg-gray-200 text-gray-900 rounded hover:bg-gray-300 transition-colors"
         >
           Close
         </button>
