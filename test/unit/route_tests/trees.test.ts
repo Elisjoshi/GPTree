@@ -54,7 +54,6 @@ describe('Testing tree endpoints', () => {
         // Check response
         expect(res.status).toEqual(201);
         const parsed = await res.json();
-        console.log("node content:", parsed.node.content);
         const created_tree = TreeSchema.parse(parsed.tree);
         expect(created_tree.name).toEqual(body.name);
         expect(created_tree.userId).toEqual(body.userId);
