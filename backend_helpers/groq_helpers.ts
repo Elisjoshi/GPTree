@@ -1,3 +1,4 @@
+import { StructuredNodeSchema } from "@/lib/validation_schemas";
 import Groq from "groq-sdk";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
@@ -57,6 +58,7 @@ export const groqTeacherPrompt = 'You will be a knowledgeable and patient teache
   + ' Each node should have 500 words or less, and add a note if and only if that word count is insufficient to cover the topic.';
 
 
+// Leaving this here for now, but we might not need it
 export const groqRootResponseStructure = {
     type: 'json_schema',
     json_schema: {
@@ -64,11 +66,10 @@ export const groqRootResponseStructure = {
         schema: {
             type: 'object',
             properties: {
-                overview: { type: 'string' },
-                subtopics: { 
-                    type: 'array',
-                    items: { type: 'string'}
-                }
+                name: { type: 'string' },
+                content: { type: {overview: { type: 'string' }, 
+                                 subtopics: { type: 'array', items: { type: 'string' } } } },
+                followups: { type: 'array', items: { type: 'string' } }
             }
         },
         required: ['overview', 'subtopics'],
@@ -79,5 +80,28 @@ export const groqRootResponseStructure = {
 export const groqRootPrompt = 'For the provided topic, Focus on identifying the **main branches (subtopics)** that someone '
   + 'would need to understand to gain a complete, high-level understanding of the subject. Because this is the root node, '
   + 'avoid going into any level of detail on subtopics; instead, provide a 1-2 sentence description of the overall topic, and '
-  + 'list the subtopics as bullet points. Ensure that your response is in **strict JSON** format matching the provided JSON structure: '
+  + 'list the subtopics as bullet points. After this, generate 3 followup questions that a user is likely to ask that would explore these subtopics, '
+  + 'and make each question 50 words or less. Lastly, generate a name for this root node that relates to the overall topic in less than 10 words, '
+  + 'Ensure that your response is in **strict JSON** format matching the provided JSON structure: '
   + JSON.stringify(groqRootResponseStructure.json_schema.schema) + '.';
+
+// Helper function for parsing
+export function parseStructuredNode(content: string) {
+    const trimmed = content.trim();
+    const first = trimmed.indexOf('{');
+    const last = trimmed.lastIndexOf('}');
+    const jsonStr = first >= 0 && last > first ? trimmed.slice(first, last + 1) : trimmed;
+    let parsed: unknown;
+
+    try {
+        parsed = JSON.parse(jsonStr);
+    } catch (e) {
+        throw new Error("Failed to parse node content as JSON");
+    }
+    console.log("Parsed node content:", parsed);
+    const r = StructuredNodeSchema.safeParse(parsed);
+    if (!r.success) {
+        throw new Error("Parsed node content does not match expected schema");
+    }
+    return r.data;
+}

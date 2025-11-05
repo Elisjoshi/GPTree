@@ -7,12 +7,14 @@ import {
     type CreateTree, 
     CreateTreeSchema,
     GetTreesSchema,
-    type PaginatedTreesResponse 
+    type PaginatedTreesResponse, 
+    StructuredNodeSchema
 } from "@/lib/validation_schemas";
 import {
     getGroqResponse,
     groqTeacherPrompt,
-    groqRootPrompt
+    groqRootPrompt,
+    parseStructuredNode
  } from "@/backend_helpers/groq_helpers";
 
 // Create a new tree for a user
@@ -37,6 +39,15 @@ export async function POST(request: NextRequest) {
             content += decoder.decode(value);
         }
 
+        // Parse and validate the content as a StructuredNode
+        const parsedNode = parseStructuredNode(content);
+        let stringContent: string;
+        if (typeof parsedNode.content !== 'string') {
+            stringContent = JSON.stringify(parsedNode.content);
+        } else {
+            stringContent = parsedNode.content;
+        }
+
         // Create the tree
         const created = await prisma.$transaction(async (tx) => {
             const newTree = await tx.tree.create({
@@ -49,10 +60,10 @@ export async function POST(request: NextRequest) {
             // Create the Root Node
             const rootNode = await tx.node.create({
                 data: {
-                    name: "root",
+                    name: parsedNode.name,
                     question: data.prompt,
-                    content,
-                    followups: [],
+                    content: stringContent,
+                    followups: parsedNode.followups,
                     treeId: newTree.id,
                     userId: data.userId,
                     parentId: null,

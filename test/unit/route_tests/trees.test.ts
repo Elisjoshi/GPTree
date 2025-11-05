@@ -11,6 +11,7 @@ beforeAll(async () => {
     // Clean test db before testing
     await prisma.node.deleteMany();
     await prisma.tree.deleteMany();
+    await prisma.account.deleteMany();
     await prisma.user.deleteMany();
 
     // Create a user to own the trees
@@ -33,6 +34,7 @@ afterAll(async () => {
         // Clean up
         await prisma.node.deleteMany();
         await prisma.tree.deleteMany();
+        await prisma.account.deleteMany();
         await prisma.user.deleteMany();
 });
 
@@ -54,6 +56,7 @@ describe('Testing tree endpoints', () => {
         // Check response
         expect(res.status).toEqual(201);
         const parsed = await res.json();
+        console.log("node: ", parsed.node);
         const created_tree = TreeSchema.parse(parsed.tree);
         expect(created_tree.name).toEqual(body.name);
         expect(created_tree.userId).toEqual(body.userId);

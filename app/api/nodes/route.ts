@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma";
 import { Prisma } from "@/app/generated/prisma";
 import { z } from "zod";
 import { CreateNodeSchema, GetNodesSchema, StructuredNodeSchema } from "@/lib/validation_schemas";
+import { parseStructuredNode } from "@/backend_helpers/groq_helpers";
 
 const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -25,25 +26,6 @@ async function callGroqChat(messages: Array<{ role: string; content: string }>, 
     const json = await resp.json();
     const content = json?.choices?.[0]?.message?.content ?? json?.choices?.[0]?.text;
     return content as string;
-}
-
-function parseStructuredNode(content: string) {
-    const trimmed = content.trim();
-    const first = trimmed.indexOf('{');
-    const last = trimmed.lastIndexOf('}');
-    const jsonStr = first >= 0 && last > first ? trimmed.slice(first, last + 1) : trimmed;
-    let parsed: unknown;
-
-    try {
-        parsed = JSON.parse(jsonStr);
-    } catch (e) {
-        throw new Error("Failed to parse node content as JSON");
-    }
-    const r = StructuredNodeSchema.safeParse(parsed);
-    if (!r.success) {
-        throw new Error("Parsed node content does not match expected schema");
-    }
-    return r.data;
 }
 
 export async function GET(request: NextRequest) {
@@ -121,8 +103,15 @@ export async function POST(request: NextRequest) {
             try {
                 const raw = await callGroqChat(messages);
                 const structured = parseStructuredNode(raw);
+                let stringContent: string;
+                if (typeof structured.content !== 'string') {
+                    stringContent = JSON.stringify(structured.content);
+                } else {
+                    stringContent = structured.content;
+                }
+
                 nodeName = structured.name;
-                nodeContent = structured.content;
+                nodeContent = stringContent;
                 followups = structured.followups;
             } catch (gErr: unknown) {
                 console.error("Groq generation error:", gErr);
