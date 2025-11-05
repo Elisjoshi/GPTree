@@ -203,6 +203,7 @@ export default function App() {
         zoomOnScroll={true}
         zoomOnPinch={true}
         fitView
+        style={{ background: 'white' }}
       />
       {selectedNode && <NodeModal
         onClose={() => {

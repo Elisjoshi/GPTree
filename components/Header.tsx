@@ -5,6 +5,10 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Header() {
   const { data: session, status } = useSession();
+  
+  if (!session && status !== "loading") {
+    return null;
+  }
 
   return (
     <header className="border-b bg-white shadow-sm">
