@@ -4,8 +4,18 @@ import { Prisma } from "@/app/generated/prisma";
 import { z } from "zod";
 import { CreateNodeSchema, GetNodesSchema, StructuredNodeSchema } from "@/lib/validation_schemas";
 import { parseStructuredNode } from "@/backend_helpers/groq_helpers";
+import { id } from "zod/locales";
 
 const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
+
+type FlashcardInput = { keyword: string; definition: string };
+export type CreatedFlashcard = {id: number; keyword: string; definition: string};
+const FlashcardsSchema = z.array(
+    z.object({
+        keyword: z.string().min(1),
+        definition: z.string().min(1),
+    })
+);
 
 async function callGroqChat(messages: Array<{ role: string; content: string }>, model = 'compound-beta') {
     if (!process.env.GROQ_API_KEY) {
@@ -26,6 +36,60 @@ async function callGroqChat(messages: Array<{ role: string; content: string }>, 
     const json = await resp.json();
     const content = json?.choices?.[0]?.message?.content ?? json?.choices?.[0]?.text;
     return content as string;
+}
+
+
+
+
+async function generateFlashcards(params: {
+    nodeName: string, 
+    nodeContent: string, 
+    nodeId: number, 
+    userId: string,}): Promise<CreatedFlashcard[]> {
+    const {nodeName, nodeContent, nodeId, userId} = params;
+
+    const systemPrompt = `You are an assistant that extracts the most helpful study flashcards for the following content.
+                        Output JSON only: an array of objects with keys "keyword" and "definition".
+                        - keyword: a short phrase (1-3 words)
+                        - definition: 1-2 sentences defining or explaining it.
+                        Return between 4 and 8 cards. JSON only.`;
+
+    const userPrompt = `Create flashcards for this node content:\n\nTitle: ${nodeName}\n\nContent:\n${nodeContent}`;
+
+    const raw = await callGroqChat([
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt },
+    ]);
+
+    let parsed: unknown;
+    try {
+        parsed = JSON.parse(raw);
+    } catch {
+        const first = raw.indexOf('[');
+        const last = raw.lastIndexOf(']');
+        parsed = JSON.parse(raw.slice(first, last + 1));
+    }
+
+    const validated = FlashcardsSchema.parse(parsed) as FlashcardInput[];
+
+    const created = await prisma.$transaction(
+        validated.map((fc) =>
+            prisma.flashcard.create({
+                data: {
+                    nodeId,
+                    userId,
+                    name: fc.keyword,
+                    content: fc.definition,
+                },
+            })
+        )
+    );
+
+    return created.map((fc) => ({
+        id: fc.id,
+        keyword: fc.name,
+        definition: fc.content,
+    }));
 }
 
 export async function GET(request: NextRequest) {
@@ -135,7 +199,19 @@ export async function POST(request: NextRequest) {
 
         const created = await prisma.node.create({ data });
 
-        return NextResponse.json({ node: created, followups }, { status: 201 });
+        let flashcards: CreatedFlashcard[] = [];
+        try {
+            flashcards = await generateFlashcards({
+                nodeName,
+                nodeContent,
+                nodeId: created.id,
+                userId: parsed.userId,
+            });
+        } catch (e) {
+            console.error("Flashcard generation error:", e);
+        }
+
+        return NextResponse.json({ node: created, followups, flashcards }, { status: 201 });
     } catch (err: unknown) {
         console.error("POST /api/node error", err);
 
