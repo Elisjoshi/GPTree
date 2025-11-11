@@ -3,9 +3,10 @@
 import Modal from "react-modal";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import ReactMarkdown from "react-markdown";
+
 import { type Node } from "@/app/generated/prisma/client";
 import { CreateNode } from "@/lib/validation_schemas";
+import MarkdownRenderer from "@/components/Generic/MarkdownRenderer";
 
 const customStyles = {
   content: {
@@ -101,6 +102,8 @@ const NodeModal = ({
     }
   };
 
+  console.log(node.content);
+
   return (
     <Modal
       isOpen={isOpen}
@@ -136,8 +139,8 @@ const NodeModal = ({
         <div>
           <h2 className="text-xl font-bold mb-2">{node.question}</h2>
           {node.content && (
-            <div className="mb-2 prose prose-sm max-w-none">
-              <ReactMarkdown>{node.content}</ReactMarkdown>
+            <div className="mb-2">
+              <MarkdownRenderer content={node.content} />
             </div>
           )}
         </div>

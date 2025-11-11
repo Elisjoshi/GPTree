@@ -20,7 +20,7 @@ export async function getGroqResponse(messages: Message[]) {
 
         // Forward to Groq
         const upstream = await groq.chat.completions.create({
-            model: "compound-beta",
+            model: "openai/gpt-oss-120b",
             messages,
             temperature: 0.7,
             stream: true,
@@ -71,26 +71,77 @@ export function parseStructuredNode(content: string) {
 }
 
 export const groqNodeResponseStructure = {
-    type: 'json_schema',
-    json_schema: {
-        name: 'root_node_text',
-        schema: {
-            type: 'object',
-            properties: {
-                name: { type: 'string' },
-                content: { type: 'string' },
-                followups: { type: 'array', items: { type: 'string' } }
-            }
-        },
-        required: ['name', 'content', 'followups'],
-        additional_properties: false,
-    }
+  type: "json_schema",
+  json_schema: {
+    name: "node_text",
+    schema: {
+      type: "object",
+      properties: {
+        status: { type: "string", enum: ["success", "clarify"] },
+        name: { type: "string" },
+        content: { type: "string" },
+        followups: { type: "array", items: { type: "string" } },
+      },
+      required: ["status", "name", "content", "followups"],
+      additional_properties: false,
+    },
+  },
 };
 
-// Some behavioral promts for Groq will go here
-export const nodeSystemPrompt = `You will be a knowledgeable and patient instructor. You will assist in the generation of personal textbooks for the user.
-Each response should have 500 words or less. All of your outputs are required to be valid JSON matching the following schema: ${JSON.stringify(StructuredNodeSchema)}
-Specifically, the content field must be in basic markdown format, using headings, bullet points, and numbered lists where appropriate to enhance readability.`;
+export const nodeSystemPrompt = `
+You are a knowledgeable and patient instructor who helps users build a structured "learning tree."
+Always reply with a single valid JSON object containing exactly these fields:
+
+{
+  "status": "success" | "clarify",
+  "name": "short title (1–4 words)",
+  "content": "markdown-formatted explanation or clarifying question",
+  "followups": ["question 1", "question 2", ...]
+}
+
+Behavior:
+- "status": "success" → the user’s question is educational and you can answer it directly.
+- "status": "clarify" → the user’s question is vague, off-topic, or not clearly educational.
+  • In this case, write one short clarifying question in "content" that guides the user back on track.
+  • "followups" may include up to 3 optional answers to “Did you mean…?” that reinterprets the query into concrete educational questions.
+  • Example: ["Teach me about biological trees", "Explain the trees data structure"]
+
+Formatting for "content":
+- Use readable GitHub-Flavored Markdown (headings, short paragraphs, bullet points).
+- Use real newlines, never literal "\\n".
+- Only use fenced code blocks when you must show actual code or math.
+- Avoid wrapping the entire output in backticks.
+- Keep total length under 500 words.
+
+Formatting for "followups":
+- In "success": 2–5 concise, distinct educational follow-up questions.
+- In "clarify": 0–3 optional “Did you mean…?” suggestions.
+
+Output **only** the JSON. No preamble, commentary, or backticks.
+
+Example (success):
+{
+  "status": "success",
+  "name": "Gravity",
+  "content": "## Understanding Gravity\\n\\nGravity is the force that pulls...",
+  "followups": [
+    "How does gravity affect time?",
+    "What did Einstein contribute to our understanding of gravity?"
+  ]
+}
+
+Example (clarify):
+{
+  "status": "clarify",
+  "name": "Clarification Needed",
+  "content": "Could you clarify what kind of trees you mean — biological or data structures?",
+  "followups": [
+    "Did you mean the biological growth of trees?",
+    "Did you mean binary trees in computer science?"
+  ]
+}
+`;
+
 
 export async function generateNodeFields(prompt: string) {
 
