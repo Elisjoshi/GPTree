@@ -26,18 +26,14 @@ repetition for better long-term memory.
     - Turn any learning session into flashcards and review then efficiently
     - Organize your learning, no longer getting unstructered notes
 
-## **2. Installation**
-a. Clone the git repository: https://github.com/Britwad/GPTree
-b. Install the dependecies by running 'npm install'
 
-## **3. Running GPTree**
-a. Run 'npm run dev' 
-b. Open browser with http://localhost:3000 
-c. either sign in with you email or continue with Google
+## **2. Running GPTree**
+a. Open browser with http://localhost:3000 
+b. either sign in with you email or continue with Google
 
 
 
-## **4. Using GPTree**
+## **3. Using GPTree**
 a. Create an account 
     Add your email into the text box or signing in with Google
     Once logged in, you'll see your dashboard listing all of your trees.
@@ -77,23 +73,23 @@ How to report a bug. This should include not just the mechanics (a pointer to yo
 what information is needed. You can set up a bug-report template in your issue tracker, or you can reference a 
 resource about how to write a good bug report. Here is an example for bug reporting guidelines.
 
-## 5. Reporting bugs**
+## 4. Reporting bugs**
 If you run into an issue, report it in the Issue Tracker https://github.com/Britwad/GPTree/Issues
 
 Filing a good Bug Report:
 
-### **5.1. Describe the problem**
+### **4.1. Describe the problem**
     What you expected to happen>
     What actually happened?
 
-### 5.2. Include reproduction steps**
+### 4.2. Include reproduction steps**
     What steps you took leading up to the issue
 
-### **5.3. Attach relevent details**
+### **4.3. Attach relevent details**
     Screenshots (User Interfact bug)
     Error messages or console logs
     
-## **6. Current limitations**
+## **5. Current limitations**
     Flashcard generation may occationally repeat or omit key concepts
     Tree visualization may slow for very large trees
     No mobile app yet-desktop only (mobile veiw in progress)
