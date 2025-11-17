@@ -285,10 +285,6 @@ export default function App() {
    * @throws Error if fetching the latest node fails
    */
   const onStreamFinish = async () => {
-    // Sanity check on these values, though they should be set already
-    setStreamingNode(null);
-    setStreamingIsOpen(false);
-
     // Fetch the latest node that was created
     const node_res = await fetch(`/api/trees/${params.treeHash}/latest_node`);
     if (!node_res.ok) {
@@ -305,6 +301,10 @@ export default function App() {
     const { nodes: flowNodes, edges: flowEdges } = generateNodesAndEdges(updatedNodesList);
     setNodes(flowNodes);
     setEdges(flowEdges);
+
+    // Sanity check on these values, though they should be set already
+    setStreamingNode(null);
+    setStreamingIsOpen(false);
   }
 
   return (
@@ -362,8 +362,6 @@ export default function App() {
       // We read a chunk and then turn it into text from bytes with a TextDecoder
       const { done, value } = await reader.read();
       if (done) {
-        setStreamingNode(null);
-        setStreamingIsOpen(false);
         break;
       };
       

@@ -56,7 +56,7 @@ const NodeModal = ({
   const [prompt, setPrompt] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const nodeQuestion = streamingIsOpen ? streamingQuestion || "" : node?.question || "";
+  const nodeQuestion = node ? node.question || "" : streamingQuestion || "";
 
   const onSubmit = async (overridePrompt?: string) => {
     const promptToUse = overridePrompt || prompt;
@@ -80,6 +80,7 @@ const NodeModal = ({
 
     setIsLoading(true);
 
+    // Prepare new node data
     const body: CreateNode = {
       question: promptToUse.trim(),
       userId: session.user.id,
@@ -89,22 +90,10 @@ const NodeModal = ({
 
     console.log("Creating node:", body);
 
-    try {
-      // const res = await fetch("/api/nodes", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(body),
-      // });
-
-      // const data = await res.json();
-      // if (!res.ok) {
-      //   console.error("Failed to create node:", data);
-      //   alert(data?.error || "Failed to create node");
-      //   return;
-      // }
-
+    // Tell the parent to handle the new node creation
+    try { // Maybe delete this try-finally block later
       setPrompt(""); // Clear input
-      onNewNode(body); // Notify parent
+      onNewNode(body);
       onClose();
     } finally {
       setIsLoading(false);
@@ -157,7 +146,7 @@ const NodeModal = ({
             </div>
           )}
         </div>}
-        { streamingIsOpen && (
+        { streamingIsOpen && !node && (
           <div>
             <h2 className="text-xl font-bold mb-2">{nodeQuestion}</h2>
             <div className="mb-2">
@@ -203,7 +192,7 @@ const NodeModal = ({
             </div>
           </div>
         )}
-        { streamingIsOpen && (
+        { streamingIsOpen && !node && (
           <div>
             <h3 className="text-lg font-semibold mb-2">Suggested Follow-ups</h3>
             <div className="flex flex-col gap-2">
