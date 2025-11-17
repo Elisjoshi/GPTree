@@ -372,7 +372,7 @@ export default function App() {
 
         // Now we have to extract the content from the parsed JSON chunk
         // If we got a chunk with content, we append it
-        const newContent = value.key === "content" ? prev!.content + value.value : prev!.content;
+        const newContent = value.key === "content" ? value.value : prev!.content;
         // If we got a number, it's an index into the followups array
         if (typeof value.key === "number") {
           // If the index is greater than the number of followups we have,
