@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { StructuredNodeSchema, FlashcardsSchema, FlashcardInput, CreatedFlashcard, StructuredNode, CreateNode } from "@/lib/validation_schemas";
+import { StructuredNodeSchema, FlashcardsSchema, FlashcardInput, StructuredNode, CreateNode } from "@/lib/validation_schemas";
 import Groq from "groq-sdk";
 import { createFlashcards } from "./prisma_helpers";
 
@@ -68,8 +68,14 @@ export async function generateFlashcards(params: {
 
 
 
-// General method to get a response from Groq
-export async function getGroqResponse(messages: Message[], params: CreateNode) {
+/**
+ * 
+ * @param messages The messages we want to give Groq. Should contain a system
+ * prompt and a user prompt
+ * @param params The parameters for creating a node in the database
+ * @returns 
+ */
+export async function groqNodeAndFlashcards(messages: Message[], params: CreateNode) {
     try {
         // Validate input
         if (!messages || !Array.isArray(messages) || messages.length === 0) {
@@ -112,7 +118,7 @@ export async function getGroqResponse(messages: Message[], params: CreateNode) {
                     const node = await storeResponseAsNode(parseStructuredNode(fullResponse), params);
 
                     // Then we make flashcards for it
-                    const flashcardData = await createFlashcards(node);
+                    await createFlashcards(node);
 
                 } catch (err) {
                     // If there's an error, we report it
@@ -177,7 +183,7 @@ export async function generateNodeStream(prompt: string, params: CreateNode) {
     // Generate content for the root node based on the prompt
     // We're streaming to the backend right now but eventually
     // we will stream to the client
-    const stream = await getGroqResponse([
+    const stream = await groqNodeAndFlashcards([
         { role: "system", content: nodeSystemPrompt },
         { role: "user", content: `I want to learn about: ${prompt}.` }
     ], params);

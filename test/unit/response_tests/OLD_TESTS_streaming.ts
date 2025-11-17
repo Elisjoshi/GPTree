@@ -1,5 +1,13 @@
-import { generateNodeStream, getGroqResponse, type Message } from "@/backend_helpers/groq_helpers";
-import { generateNode } from "@/frontend_helpers/node_helpers";
+// This was a test file made during the implementation of 
+// streaming our responses from Groq so that we could examine
+// the structure of the chunks after parsing, and it was hastily
+// put together for that purpose. It's probably smart to come back to
+// this file later and make it useful for something
+
+
+
+
+
 import { JSONParser } from "@streamparser/json-whatwg";
 import { POST } from "@/app/api/nodes/route";
 import prisma from "@/lib/prisma";
@@ -45,7 +53,7 @@ afterAll(async () => {
         await prisma.user.deleteMany();
 });
 
-describe("getGroqResponse", () => {
+describe("groqNodeAndFlashcards", () => {
     test("Gives back a response on valid input", async () => {
         const body: CreateTree = first_tree;
         const req = new NextRequest('http://fake_url/api/trees', {

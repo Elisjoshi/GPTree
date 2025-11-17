@@ -2,22 +2,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { z } from "zod";
-import { 
-    type CreateTree, 
-    CreateTreeSchema,
+import {
     GetTreesSchema,
     type PaginatedTreesResponse, 
-    type CreatedFlashcard,
-    CreateNode,
     InitTreeSchema,
 } from "@/lib/validation_schemas";
-import {
-    getGroqResponse,
-    parseStructuredNode,
-    generateFlashcards,
-    nodeSystemPrompt,
-    generateNodeStream,
- } from "@/backend_helpers/groq_helpers";
 
 // Create the root node and flashcards for a user's new tree
 export async function POST(request: NextRequest) {

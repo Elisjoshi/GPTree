@@ -38,7 +38,7 @@ export type GetByUserId = z.infer<typeof GetByUserIdSchema>;
 export const CreateTreeSchema = z.object({
     name: z.string().min(1).max(100),
     userId: z.string().min(1),
-    prompt: z.string().min(1).max(500)
+    prompt: z.string().min(1).max(500).optional(),
 });
 export type CreateTree = z.infer<typeof CreateTreeSchema>;
 
