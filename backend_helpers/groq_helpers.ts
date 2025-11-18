@@ -4,7 +4,7 @@ import Groq from "groq-sdk";
 import { createFlashcards } from "./prisma_helpers";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-export type Message = { role: "system" | "user" | "assistant"; content: string };
+export type Message = { role: "system" | "user" | "assistant" | "developer"; content: string };
 
 export async function getGroqChatCompletion(
   messages: Message[],
